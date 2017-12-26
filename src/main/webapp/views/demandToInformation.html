@@ -1,0 +1,153 @@
+<div class="row" data-ng-controller="Tab2_cntrl">
+	<div class="col-sm-12">
+		<section class="widget">
+			<div class="widget-body">
+				<form class="form-horizontal ng-pristine ng-valid" role="form">
+					<fieldset>
+						<legend>
+							<strong>Demand To Information</strong>
+						</legend>
+
+						<div class="form-group">
+							<label for="municipalityInvolved" class="col-sm-3 control-label">Municipality
+								Involved<span class="required">*</span></label>
+							<div class="col-sm-2">
+								<select id="mInvovled" class="form-control radius-top-bot"
+									data-ng-model="bInfo.municipalityInvolved"
+									data-ng-class="{submitted: bInfo.municipalityInvolved==undefined || bInfo.municipalityInvolved==''}">
+									<option value="">-- Choose--</option>
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+									<option value="Unknown">Unknown</option>
+								</select>
+							</div>
+							<label for="photos" class="col-sm-1 control-label">Photos<span class="required">*</span></label>
+							<div class="col-sm-2">
+								<select id="photos" class="form-control radius-top-bot"
+									data-ng-model="bInfo.photos"
+									data-ng-class="{submitted: bInfo.photos==undefined || bInfo.photos==''}">
+									<option value="">-- Choose--</option>
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+								</select>
+							</div>
+							<label for="areThereWitness" class="col-sm-2 control-label">Are
+								There Witnesses<span class="required">*</span></label>
+							<div class="col-sm-2">
+								<select id="damageDescription"
+									class="form-control radius-top-bot"
+									data-ng-model="bInfo.areThereWitness"
+									data-ng-class="{submitted: bInfo.areThereWitness==undefined || bInfo.areThereWitness==''}">
+									<option value="">-- Choose--</option>
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+									<option value="Unknown">Unknown</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="partyResponsible" class="col-sm-3 control-label">Party
+								Responsible for Damage<span class="required">*</span></label>
+							<div class="col-sm-9">
+								<select id="damageDescription"
+									class="form-control radius-top-bot"
+									data-ng-model="bInfo.partyResponsible"
+									data-ng-class="{submitted: bInfo.partyResponsible==undefined || bInfo.partyResponsible==''}">
+									<option value="">-- Choose--</option>
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="individualName">Individual
+								Name</label>
+							<div class="col-sm-5">
+								<input id="industry" type="text" placeholder=""
+									class="form-control radius-top-bot"
+									data-ng-model="bInfo.individualName">
+							</div>
+							<div class="col-sm-4">
+								<a href="" type="button" class="btn btn-primary">Lookup
+									Municipality or Contractor</a>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="partyAddress">Address</label>
+							<div class="col-sm-9">
+								<textarea rows="4" class="form-control" id="default-textarea"
+									data-ng-model="bInfo.partyAddress"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="partyCity">City</label>
+							<div class="col-sm-3">
+								<input type="text" id="normal-field" class="form-control"
+									data-ng-model="bInfo.partyCity">
+							</div>
+							<label class="col-sm-2 control-label" for="partyState">State</label>
+							<div class="col-sm-3">
+								<input id="industry" type="text" placeholder=""
+									class="form-control" data-ng-model="bInfo.partyState">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="partyCountry">Country</label>
+							<div class="col-sm-3">
+								<select id="damageDescription"
+									class="form-control radius-top-bot"
+									data-ng-model="bInfo.partyCountry">
+									<option value="">-- Choose Country--</option>
+									<option value="USA">USA</option>
+									<option value="Canada">Canada</option>
+								</select>
+							</div>
+							<label class="col-sm-2 control-label" for="partyZip">Zip</label>
+							<div class="col-sm-3">
+								<input type="text" id="normal-field" class="form-control"
+									data-ng-model="bInfo.partyZip">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="partyTelephone">Telephone</label>
+							<div class="col-sm-3">
+								<input type="text" id="normal-field" class="form-control"
+									data-ng-model="bInfo.partyTelephone">
+							</div>
+							<label class="col-sm-2 control-label" for="partyExt">Ext</label>
+							<div class="col-sm-3">
+								<input type="text" id="normal-field" class="form-control"
+									data-ng-model="bInfo.partyExt">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="isCmpContractor">Is
+								Damager a Company Contractor</label>
+							<div class="col-sm-3">
+								<select id="damageDescription"
+									class="form-control radius-top-bot"
+									data-ng-model="bInfo.isCmpContractor">
+									<option value="">-- Choose--</option>
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+								</select>
+							</div>
+							<label class="col-sm-3 control-label"
+								for="isDamgrContractLocator">Is Damager a Contract
+								Locator</label>
+							<div class="col-sm-3">
+								<select id="damageDescription"
+									class="form-control radius-top-bot"
+									data-ng-model="bInfo.isDamgrContractLocator">
+									<option value="">-- Choose--</option>
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+								</select>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</section>
+	</div>
+</div>

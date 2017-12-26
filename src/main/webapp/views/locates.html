@@ -1,0 +1,59 @@
+<div class="row" ng-controller="Tab4_cntrl">
+	<div class="col-sm-12">
+		<section class="widget">
+			<div class="widget-body">
+				<form class="form-horizontal ng-pristine ng-valid" role="form">
+					<fieldset>
+						<legend>
+							<strong>Locates</strong>
+						</legend>
+
+						<div class="form-group">
+							<label for="normal-field" class="col-sm-3 control-label">Type
+								of Easement</label>
+							<div class="col-sm-9">
+								<select id="mInvovled" class="form-control radius-top-bot"
+									ng-model="bInfo.mInvovled">
+									<option value="">-- Choose--</option>
+									<option value="1">Yes</option>
+									<option value="0">No</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="normal-field" class="col-sm-3 control-label">Utility
+								Claim Number</label>
+							<div class="col-sm-9">
+								<input id="industry" type="text" placeholder=""
+									class="form-control radius-top-bot" ng-model="bInfo.partyName">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="prepended-input">Damage
+								Depth / Height</label>
+							<div class="col-sm-2">
+								<div class="input-group">
+									<input type="text" id="normal-field" class="form-control  "
+										ng-model="bInfo.partyCity"><span
+										class="input-group-addon radius-right-top-bot"
+										ng-model="dmg.DDT">ft</span>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="input-group">
+									<input type="text" id="normal-field" class="form-control  "
+										ng-model="bInfo.partyCity"><span
+										class="input-group-addon radius-right-top-bot"
+										ng-model="dmg.DDT">in</span>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</section>
+	</div>
+</div>
+
+
+

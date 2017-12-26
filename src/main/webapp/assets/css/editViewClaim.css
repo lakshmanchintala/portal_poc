@@ -1,0 +1,42 @@
+.hr-bd-color {
+	border-top: 2px solid #009900;
+}
+
+.pan-head-font {
+	font-size:medium;
+	font-weight: bold;
+}
+
+.pan-body-head-font {
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.action-btn-margin {
+	margin-bottom: 10px;
+}
+
+.additionalFieldRow {
+	padding-left: 7px;
+}
+
+.padding-left-0{
+    padding-right:50px;
+    padding-left:0;
+}
+
+.padding-right-0{
+    padding-right:0;
+}
+
+.rotate-by-90 {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.mod-by-left-pad {
+    padding-left: 30px;
+}

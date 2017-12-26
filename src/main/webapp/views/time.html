@@ -1,0 +1,132 @@
+<div class="row" ng-controller="Tab4_cntrl">
+	<div class="col-sm-12">
+		<section class="widget">
+			<div class="widget-body">
+				<form class="form-horizontal ng-pristine ng-valid" role="form">
+					<fieldset>
+						<legend>
+							<strong>Time</strong>
+						</legend>
+
+						<div class="form-group">
+							<div class="form-actions">
+								<div class="row">
+									<div class="col-sm-offset-4 col-sm-7">
+										<label class="col-sm-3 control-label" for="prepended-input">Data
+											Table</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<p for="normal-field" class="col-sm-12 colorRed">Input time
+								for each technician or engineer who repaired damaged facilities</p>
+						</div>
+						<div class="form-group">
+							<p for="normal-field" class="col-sm-12 colorRed">If no time
+								has been worked yet by company employee, Select the Remove this
+								Time Entry button below to bypass this information</p>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="tooltip-enabled">Employee
+								Name</label>
+							<div class="col-sm-10">
+								<input id="industry" type="text" placeholder=""
+									class="form-control radius-top-bot" ng-model="bInfo.partyName">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="tooltip-enabled">Employee
+								Title</label>
+							<div class="col-sm-10">
+								<select id="mInvovled" class="form-control radius-top-bot"
+									ng-model="bInfo.mInvovled">
+									<option value="">-- Choose--</option>
+									<option value="1">Yes</option>
+									<option value="0">No</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="tooltip-enabled">Repair
+								Date</label>
+							<div class="col-sm-4">
+								<div id="datetimepicker2" class="input-group">
+									<input id="datepicker2i" type="text" class="form-control">
+									<a class="input-group-addon radius-right-top-bot"><span
+										class="fa fa-calendar" ng-model="dmg.DT"></span></a>
+								</div>
+							</div>
+							<label class="col-sm-3 control-label" for="tooltip-enabled">RC</label>
+							<div class="col-sm-3">
+								<input id="industry" type="text" placeholder=""
+									class="form-control radius-top-bot" ng-model="bInfo.partyName">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="tooltip-enabled">Regular
+								Hours</label>
+							<div class="col-sm-2">
+								<input id="industry" type="text" placeholder=""
+									class="form-control radius-top-bot" ng-model="bInfo.partyName">
+							</div>
+							<label class="col-sm-2 control-label" for="tooltip-enabled">Overtime
+								Hours</label>
+							<div class="col-sm-2">
+								<input id="industry" type="text" placeholder=""
+									class="form-control radius-top-bot" ng-model="bInfo.partyName">
+							</div>
+							<label class="col-sm-2 control-label" for="tooltip-enabled">Double
+								Time Hours</label>
+							<div class="col-sm-2">
+								<input id="industry" type="text" placeholder=""
+									class="form-control radius-top-bot" ng-model="bInfo.partyName">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="normal-field" class="col-sm-2 control-label">Find
+								Field Report Code</label>
+							<div class="col-sm-7">
+								<input id="industry" type="text" placeholder=""
+									class="form-control radius-top-bot" ng-model="bInfo.partyName">
+							</div>
+							<div class="col-sm-3">
+								<a href="" type="button" class="btn btn-primary">Find FRC</a>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="prepended-input">Find
+								Report Code</label>
+							<div class="col-sm-10">
+								<select id="mInvovled" class="form-control radius-top-bot"
+									ng-model="bInfo.mInvovled">
+									<option value="">-- Choose--</option>
+									<option value="1">Yes</option>
+									<option value="0">No</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-actions">
+							<div class="row">
+								<div class="col-sm-offset-3 col-sm-7">
+									<button type="button" class="btn btn-primary">Add
+										Another Time Entry</button>
+									<button type="button" class="btn btn-inverse">Add Another Technician</button>
+									<button type="button" class="btn btn-inverse">Remove
+										this Time Entry</button>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</section>
+	</div>
+</div>
+
+
+
+
+
+
+

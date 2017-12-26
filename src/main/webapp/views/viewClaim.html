@@ -1,0 +1,243 @@
+<div id="printDiv" ng-controller="viewClaimController">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="form-actions">
+				<div class="row">
+					<div class="col-sm-8 col-xs-12">
+						<span ng-if="!tabs.isSubmitted"> <strong>Non
+								Submitted Claim ID: </strong><b class="att-orange">{{tabs.nonSubClaimID}}
+						</b>
+						</span> <span ng-if="tabs.isSubmitted"> <strong>Submitted
+								Claim ID: </strong><b class="att-orange">{{tabs.submittedClaimID}} </b>
+						</span>
+					</div>
+					<div class="col-sm-4 col-xs-12">
+						<div class="col-sm-4 col-xs-4">
+							<a class="btn btn-default" href="#/technician"> <i
+								class="fa fa-home att-blue">&nbsp;Home</i>
+							</a>
+						</div>
+						<div class="col-sm-4 col-xs-4">
+							<a class="btn btn-default"  ng-click="printDiv('printDiv')"> <i
+								class="fa fa-print att-blue">&nbsp;Print</i>
+							</a>
+						</div>
+						<div class="col-sm-4 col-xs-4" ng-if="!tabs.isSubmitted">
+							<button class="btn btn-default" ng-click="back()" >
+								<i class="fa fa-arrow-left att-blue">&nbsp;Back</i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row margin-top-10">
+		<div class="col-sm-12">
+			<form class="form-horizontal ng-pristine ng-valid" role="form">
+				<fieldset>
+					<div class="margin-top-10">
+						<uib-accordion close-others="false">
+						<div uib-accordion-group class=""
+						data-ng-init="damage = {open: true}"
+						is-open="damage.open">
+						<uib-accordion-heading> Damage <i
+							class="pull-right glyphicon"
+							data-ng-class="{'glyphicon-chevron-down': damage.open, 'glyphicon-chevron-right': !damage.open}"></i>
+						</uib-accordion-heading>
+						<div class="form-group">
+							<label for="desc" class="col-sm-4 control-label">Damage
+								Description </label>
+							<div class="col-sm-8">
+								<p>{{tabs.data1.desc}}</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="desc" class="col-sm-4 control-label">How
+								Damage Occurred </label>
+							<div class="col-sm-8">
+								<p>{{tabs.data1.howOccur}}</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="desc" class="col-sm-4 control-label">Damage
+								Date/Time </label>
+							<div class="col-sm-8">
+								<p>{{tabs.data1.damageDate | date}}</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="desc" class="col-sm-4 control-label">Estimated
+								Date/Time </label>
+							<div class="col-sm-8">
+								<p>{{tabs.data1.estimatedDate | date}}</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="desc" class="col-sm-4 control-label">Discovery
+								Date/Time </label>
+							<div class="col-sm-8">
+								<p>{{tabs.data1.discoveryDate | date}}</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="desc" class="col-sm-4 control-label">Estimated
+								Date/Time </label>
+							<div class="col-sm-8">
+								<p>{{tabs.data1.estimatedDiscoveryDate | date}}</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="desc" class="col-sm-4 control-label">Damage
+								Address </label>
+							<div class="col-sm-8">
+								<p>{{tabs.data1.addrs}}</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="desc" class="col-sm-4 control-label">State of
+								Damages </label>
+							<div class="col-sm-8">
+								<p>{{tabs.data1.state}}</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="desc" class="col-sm-4 control-label">City of
+								Damages </label>
+							<div class="col-sm-8">
+								<p>{{tabs.data1.city}}</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="desc" class="col-sm-4 control-label">County </label>
+							<div class="col-sm-8">
+								<p>{{tabs.data1.county}}</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="desc" class="col-sm-4 control-label">Area
+								Code </label>
+							<div class="col-sm-8">
+								<p>{{tabs.data1.areaCode}}</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="desc" class="col-sm-4 control-label">Wire
+								Center </label>
+							<div class="col-sm-8">
+								<p>{{tabs.data1.wireCenter}}</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="desc" class="col-sm-4 control-label">Wire
+								Center Name </label>
+							<div class="col-sm-8">
+								<p>{{tabs.data1.wireCenterName}}</p>
+							</div>
+						</div>
+					</div>
+						<div uib-accordion-group class=""
+							data-ng-init="unsubmitted = {open: true}"
+							is-open="unsubmitted.open">
+							<uib-accordion-heading> Demand to
+							Information <i class="pull-right glyphicon"
+								data-ng-class="{'glyphicon-chevron-down': unsubmitted.open, 'glyphicon-chevron-right': !unsubmitted.open}"></i>
+							</uib-accordion-heading>
+							<div class="form-group">
+								<label for="desc" class="col-sm-4 control-label">Municipality
+									Involved</label>
+								<div class="col-sm-8">
+									<p>{{tabs.data2.municipalityInvolved}}</p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="desc" class="col-sm-4 control-label">Photos</label>
+								<div class="col-sm-8">
+									<p>{{tabs.data2.photos}}</p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="desc" class="col-sm-4 control-label">Are
+									There Witnesses</label>
+								<div class="col-sm-8">
+									<p>{{tabs.data2.areThereWitness}}</p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="desc" class="col-sm-4 control-label">Party
+									Responsible for Damage</label>
+								<div class="col-sm-8">
+									<p>{{tabs.data2.partyResponsible}}</p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="desc" class="col-sm-4 control-label">Individual
+									Name</label>
+								<div class="col-sm-8">
+									<p>{{tabs.data2.individualName}}</p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="desc" class="col-sm-4 control-label">Address</label>
+								<div class="col-sm-8">
+									<p>{{tabs.data2.partyAddress}}</p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="desc" class="col-sm-4 control-label">City</label>
+								<div class="col-sm-8">
+									<p>{{tabs.data2.partyCity}}</p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="desc" class="col-sm-4 control-label">Telephone</label>
+								<div class="col-sm-8">
+									<p>{{tabs.data2.partyTelephone}}</p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="desc" class="col-sm-4 control-label">Is
+									Damager a Company Contractor</label>
+								<div class="col-sm-8">
+									<p>{{tabs.data2.isCmpContractor}}</p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="desc" class="col-sm-4 control-label">Is
+									Damager a Contract Locator </label>
+								<div class="col-sm-8">
+									<p>{{tabs.data2.isDamgrContractLocator}}</p>
+								</div>
+							</div>
+						</div>
+						
+						<div uib-accordion-group class=""
+							data-ng-init="fileupload = {open: true}"
+							is-open="fileupload.open">
+							<uib-accordion-heading> Uploaded Files <i class="pull-right glyphicon"
+								data-ng-class="{'glyphicon-chevron-down': fileupload.open, 'glyphicon-chevron-right': !fileupload.open}"></i>
+							</uib-accordion-heading>
+							<div class="form-group">
+								<label for="desc" class="col-sm-4 control-label">Files Uploaded
+									</label>
+								<div class="col-sm-8">
+								<ol><li ng-repeat="ph in photos track by $index">
+
+								<a data-ng-href="{{ph.image}}" title="{{ph.name}}"
+											download="{{ph.name}}" data-gallery><img
+											HEIGHT=50 WIDTH=50 data-ng-src="{{ph.thumbnail}}" alt=""></a>
+								{{ph.name}} <br><br>
+								
+								</li></ol>
+								</div>
+							</div>
+							
+						</div>
+						
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</div>
+

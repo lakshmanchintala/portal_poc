@@ -1,0 +1,180 @@
+<div class="row"><!--  data-ng-controller="Tab1_cntrl"> -->
+	<div class="col-sm-12">
+		<section class="widget">
+			<div class="widget-body">
+				<form class="form-horizontal ng-pristine ng-valid" role="form">
+					<fieldset>
+						<legend>
+							<strong>Damage</strong>
+						</legend>
+						<div class="form-group">
+							<label for="desc" class="col-sm-2 control-label">Damage
+								Description<span class="required">*</span>
+							</label>
+							<div class="col-sm-10">
+							<!-- <input type="text" rows="1" class="form-control radius-top-bot" data-ng-model="dmg.desc" data-ng-class="{submitted: dmg.desc==undefined || dmg.desc==''}" 
+								placeholder="Start typing to select a damage description" ng-focus="searchDmgDesc()" uib-typeahead="i for i in damageDescription | filter:$viewValue"> -->
+							<div custom-select="dm for dm in damageDescription | filter: $searchTerm"  data-ng-model="dmg.desc"
+									data-ng-class="{submitted: dmg.desc==undefined || dmg.desc==''}" autofocus></div> 							
+							<!-- <select id="damageDescription"
+									class="form-control radius-top-bot" data-ng-model="dmg.desc"
+									data-ng-class="{submitted: dmg.desc==undefined || dmg.desc==''}" data-ng-options="td for td in damageDescription">
+							    <option value="">-- Choose --</option>
+							</select> -->
+<!-- 								<select id="damageDescription"
+									class="form-control radius-top-bot" data-ng-model="dmg.desc"
+									data-ng-class="{submitted: dmg.desc==undefined || dmg.desc==''}">
+									<option value="">-- Choose Description --</option>
+									<option value="Description1">Description1</option>
+									<option value="Description2">Description2</option>
+									<option value="Description3">Description3</option>
+									<option value="Description4">Description4</option>
+								</select> -->
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="howOccur" class="col-sm-2 control-label">How
+								Damage Occurred<span class="required">*</span>
+							</label>
+							<div class="col-sm-10">
+								<textarea rows="4" class="form-control" id="default-textarea"
+									data-ng-model="dmg.howOccur"
+									data-ng-class="{submitted: dmg.howOccur=='' || dmg.howOccur==undefined}"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="damageDate">Damage
+								Date/Time<span class="required">*</span>
+							</label>
+							<div class="col-sm-4">
+								<div id="date" class="input-group">
+									<input type="text" class="form-control"
+										data-ng-class="{submitted: dmg.damageDate==undefined || dmg.damageDate==''}"
+										uib-datepicker-popup="{{format}}" data-ng-model="dmg.damageDate"
+										is-open="popup1.opened" datepicker-options="dateOptions"
+										data-ng-required="true" close-text="Close"> <a
+										class="input-group-addon radius-right-top-bot"
+										data-ng-click="open1()"><span class="fa fa-calendar"></span></a>
+									<uib-timepicker data-ng-model="dmg.damageDate" hour-step="1" minute-step="1"
+										show-meridian="true" show-spinners="false"> </uib-timepicker>
+								</div>
+							</div>
+							<label class="col-sm-2 control-label" for="estimatedDate">Estimated
+								Date/Time<span class="required">*</span>
+							</label>
+							<div class="col-sm-4">
+								<div id="date" class="input-group">
+									<input type="text" class="form-control"
+										data-ng-class="{submitted: dmg.estimatedDate==undefined || dmg.estimatedDate=='' }"
+										uib-datepicker-popup="{{format}}" data-ng-model="dmg.estimatedDate"
+										is-open="popup2.opened" datepicker-options="dateOptions"
+										data-ng-required="true" close-text="Close"> <a
+										class="input-group-addon radius-right-top-bot"
+										data-ng-click="open2()"><span class="fa fa-calendar"></span></a>
+									<uib-timepicker data-ng-model="dmg.estimatedDate" hour-step="1" minute-step="1"
+										show-meridian="true" show-spinners="false"> </uib-timepicker>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="discoveryDate">Discovery
+								Date/Time</label>
+							<div class="col-sm-4">
+								<div id="date" class="input-group">
+									<input type="text" class="form-control"
+										uib-datepicker-popup="{{format}}" data-ng-model="dmg.discoveryDate"
+										is-open="popup3.opened" datepicker-options="dateOptions"
+										data-ng-required="true" close-text="Close"> <a
+										class="input-group-addon radius-right-top-bot"
+										data-ng-click="open3()"><span class="fa fa-calendar"></span></a>
+									<uib-timepicker data-ng-model="dmg.discoveryDate" hour-step="1" minute-step="1"
+										show-meridian="true" show-spinners="false"> </uib-timepicker>
+								</div>
+							</div>
+							<label class="col-sm-2 control-label" for="estimatedDiscoveryDate">Estimated
+								Date/Time</label>
+							<div class="col-sm-4">
+								<div id="date" class="input-group">
+									<input type="text" class="form-control"
+										uib-datepicker-popup="{{format}}" data-ng-model="dmg.estimatedDiscoveryDate"
+										is-open="popup4.opened" datepicker-options="dateOptions"
+										data-ng-required="true" close-text="Close"> <a
+										class="input-group-addon radius-right-top-bot"
+										data-ng-click="open4()"><span class="fa fa-calendar"></span></a>
+									<uib-timepicker data-ng-model="dmg.estimatedDiscoveryDate" hour-step="1" minute-step="1"
+										show-meridian="true" show-spinners="false"> </uib-timepicker>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="addrs" class="col-sm-2 control-label">Damage
+								Address<span class="required">*</span>
+							</label>
+							
+							<div class="col-sm-10">
+							<input type="text" rows="1" ng-model='autofillLocation' class="form-control" id="autocomplete" placeholder="Enter your address for auto complete" 
+								ng-change="searchLocation()"><!--  uib-typeahead="item for item in searchLocation($viewValue)"> -->
+								<textarea rows="3" class="form-control" id="default-textarea"
+									data-ng-model="dmg.addrs"
+									data-ng-class="{submitted: dmg.addrs==undefined || dmg.addrs==''}"></textarea>
+							</div>
+							
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="state">State
+								of Damages<span class="required">*</span>
+							</label>
+							<div class="col-sm-2">
+								<select id="damagestate" class="form-control radius-top-bot"
+									data-ng-model="dmg.state" data-ng-options="st for st in states"
+									data-ng-class="{submitted: dmg.state==undefined || dmg.state==''}">
+									<option value="">-- Choose State --</option>
+								</select>
+							</div>
+							<label class="col-sm-2 control-label" for="city">City
+								of Damages<span class="required">*</span>
+							</label>
+							<div class="col-sm-2">
+								<input type="text" id="normal-field" class="form-control"
+									data-ng-model="dmg.city"
+									data-ng-class="{submitted: dmg.city==undefined || dmg.city==''}">
+							</div>
+							<label class="col-sm-2 control-label" for="county">County<span
+								class="required">*</span></label>
+							<div class="col-sm-2">
+								<input type="text" id="normal-field" class="form-control"
+									data-ng-model="dmg.county"
+									data-ng-class="{submitted: dmg.county==undefined || dmg.county==''}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="areaCode">Area
+								Code<span class="required">*</span>
+							</label>
+							<div class="col-sm-2">
+								<input type="text" id="normal-field" class="form-control"
+									data-ng-model="dmg.areaCode"
+									data-ng-class="{submitted: dmg.areaCode==undefined || dmg.areaCode==''}">
+							</div>
+							<label class="col-sm-2 control-label" for="wireCenter">Wire
+								Center<span class="required">*</span>
+							</label>
+							<div class="col-sm-2">
+								<input type="text" id="normal-field" class="form-control"
+									data-ng-model="dmg.wireCenter" data-ng-class="{submitted: dmg.wireCenter==undefined || dmg.wireCenter==''}">
+							</div>
+							<label class="col-sm-2 control-label" for="wireCenterName">Wire
+								Center Name<span class="required">*</span>
+							</label>
+							<div class="col-sm-2">
+								<input type="text" id="normal-field" class="form-control"
+									data-ng-model="dmg.wireCenterName"
+									data-ng-class="{submitted: dmg.wireCenterName==undefined || dmg.wireCenterName==''}">
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</section>
+	</div>
+</div>

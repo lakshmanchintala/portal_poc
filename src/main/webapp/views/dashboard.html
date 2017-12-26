@@ -1,0 +1,843 @@
+<div class="row margin-top-20">
+	<div class="col-sm-12">
+		<div class="col-sm-9">
+			<section class="widget bg-warning-widget">
+				<div class="widget-body" style="height: 42px;">
+					<div class="row ">
+						<div class="col-sm-12 col-xs-12">
+							<div class="col-sm-5 col-xs-6">
+								<h4>Show Claim for Another User</h4>
+							</div>
+							<div class="col-sm-4 col-xs-3">
+								<input id="" type="text" placeholder=""
+									class="form-control radius-top-bot">
+							</div>
+							<div class="col-sm-3 col-xs-3">
+								<a class="btn btn-primary">Submit</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<div class="col-sm-3" style="padding-right:0px;padding-left:0px;" id="widget-hover">
+			<a class="text-white" data-ng-click="createClaimPopUp()">
+				<section class="widget bg-primary" style="border-radius:25px;" >
+					<div class="widget-body" style="text-align:center;">
+						<i class="fa fa-folder-open fa-2x text-white" aria-hidden="true">Enter
+							Claim</i>
+					</div>
+				</section>
+			</a>
+		</div>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="col-sm-12">
+		<div class="col-sm-9">
+			<div>
+
+			<uib-accordion close-others="false">
+			<div data-ng-controller="NonSubmittedClaimsGridCtrl"  style="margin-bottom: 5px;">
+ 				<div id="" uib-accordion-group class="panel-info" is-open="gridNonSubmitted">
+					<uib-accordion-heading> Non Submitted Claims Grid<i
+						class="pull-right glyphicon"
+						data-ng-class="{'glyphicon-chevron-down': gridNonSubmitted, 'glyphicon-chevron-right':!gridNonSubmitted}"></i>
+					</uib-accordion-heading>
+			
+					<div>
+			<div class="row">
+				<div class="col-sm-1" style="padding-right: 0px;">
+					<label for="viewName">View:</label>
+				</div>
+				<div class="col-sm-3">
+					<select id="viewSelected" class="form-control radius-top-bot" data-ng-model="viewData.viewSelected" ng-options="view as view.name for view in views track by view.id">
+						<option value="">Select</option>
+					</select>
+				</div>
+				<div class="col-sm-4" style="padding-left: 0px;">
+					<a class="btn btn-primary btn-sm" ng-click="loadView()">Go</a> 
+					<a class="btn btn-primary btn-sm" data-ng-click="editViewPopUp()">Edit</a>
+					<a class="btn btn-primary btn-sm"  data-ng-click="createViewPopUp()">Create New View</a>
+				</div>
+				<div class="col-sm-2">
+					<a class="btn btn-link"  data-ng-click="advancedSearchModal()">Advanced Search</a> 
+				</div>
+			    <div class="col-sm-2">
+					<a class="btn btn-link"  data-ng-click="clearAdvSearch()">Clear</a>
+				</div>
+			</div><br>
+						<div ui-grid="gridOptions" style="height=10px" 
+                                      ui-grid-pagination  
+                                      ui-grid-auto-resize  
+                                      ui-grid-resize-columns
+                                      class="myGrid">
+                        </div>
+					</div>
+				</div> 
+				</div>				
+				<!-- <div uib-accordion-group class="panel-info"
+					data-ng-init="unsubmitted = {open: false}"
+					is-open="unsubmitted.open">
+					<uib-accordion-heading> Non Submitted
+					Claims <i class="pull-right glyphicon"
+						data-ng-class="{'glyphicon-chevron-down': unsubmitted.open, 'glyphicon-chevron-right': !unsubmitted.open}"></i>
+					</uib-accordion-heading>
+					<div data-ng-controller="NonSubmittedClaimsCtrl">
+						<div class="row">
+							<div class="col-xs-6">
+								<div class="input-group">
+									<div class="col-sm-12 margin-top-5">
+										<span>Show <select style="border-radius: 2px;"
+											data-ng-init="numPerPage = paginationOptions[0]"
+											data-ng-model="numPerPage" data-ng-change="filter()"
+											data-ng-options="x for x in paginationOptions"></select>
+											entries
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-6">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-search"></i></span> <input type="text"
+										class="form-control" placeholder="Enter Search Text"
+										data-ng-model="searchText" data-ng-change="filter()" />
+								</div>
+							</div>
+						</div>
+
+						<div class="row margin-top-10 table-responsive">
+							<div class="col-md-12">
+								<table class="table table-hover table-condensed table-bordered">
+									<thead>
+										<tr class="active">
+											<th><a
+												data-ng-click="sortType = 'nonSubClaimID'; sortDescending = !sortDescending; filter()">
+													Claim Number <span
+													data-ng-show="sortType == 'nonSubClaimID' && !sortDescending"
+													class="fa fa-caret-down"></span> <span
+													data-ng-show="sortType == 'nonSubClaimID' && sortDescending"
+													class="fa fa-caret-up"></span>
+											</a></th>
+											<th><a
+												data-ng-click="sortType = 'data1.damageDate'; sortDescending = !sortDescending; filter()">
+													Damage Date <span
+													data-ng-show="sortType == 'data1.damageDate' && !sortDescending"
+													class="fa fa-caret-down"></span> <span
+													data-ng-show="sortType == 'data1.damageDate' && sortDescending"
+													class="fa fa-caret-up"></span>
+											</a></th>
+											<th><a
+												data-ng-click="sortType = 'data1.desc'; sortDescending = !sortDescending; filter()">
+													Description <span
+													data-ng-show="sortType == 'data1.desc' && !sortDescending"
+													class="fa fa-caret-down"></span> <span
+													data-ng-show="sortType == 'data1.desc' && sortDescending"
+													class="fa fa-caret-up"></span>
+											</a></th>
+											<th><a
+												data-ng-click="sortType = 'data1.city'; sortDescending = !sortDescending; filter()">
+													City <span
+													data-ng-show="sortType == 'data1.city' && !sortDescending"
+													class="fa fa-caret-down"></span> <span
+													data-ng-show="sortType == 'data1.city' && sortDescending"
+													class="fa fa-caret-up"></span>
+											</a></th>
+											<th><a
+												data-ng-click="sortType = 'data1.state'; sortDescending = !sortDescending; filter()">
+													State <span
+													data-ng-show="sortType == 'data1.state' && !sortDescending"
+													class="fa fa-caret-down"></span> <span
+													data-ng-show="sortType == 'data1.state' && sortDescending"
+													class="fa fa-caret-up"></span>
+											</a></th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr data-ng-repeat="row in filteredRT | filter: paginate ">
+											<td><a style="cursor: pointer;"
+												data-ng-click="navigateClaim(row.nonSubClaimID)">{{row.nonSubClaimID}}</a></td>
+											<td>{{row.data1.damageDate}}</td>
+											<td>{{row.data1.desc}}</td>
+											<td>{{row.data1.city}}</td>
+											<td>{{row.data1.state}}</td>
+											<td style="text-align: center;"><span style="cursor:pointer;" ng-click="removeClaim(row.nonSubClaimID)"><i class="fa fa-times" aria-hidden="true"></i></span></td>
+										</tr>
+									</tbody>
+									<tfoot>
+										<tr>
+											<td colspan="6" class="text-right">Showing page
+												{{currentPage}} of {{numPages}}</td>
+										</tr>
+									</tfoot>
+								</table>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<uib-pagination class="pagination-sm" total-items="totalItems"
+									max-size="maxSize" items-per-page="numPerPage"
+									num-pages="numPages" data-ng-model="currentPage"
+									boundary-links="true" rotate="false"></uib-pagination>
+							</div>
+						</div>
+					</div>
+				</div> -->
+				<div uib-accordion-group class="panel-info" is-open="submitted.open">
+					<uib-accordion-heading> Submitted Claims <i
+						class="pull-right glyphicon"
+						data-ng-class="{'glyphicon-chevron-down': submitted.open, 'glyphicon-chevron-right': !submitted.open}"></i>
+					</uib-accordion-heading>
+					<div data-ng-controller="SubmittedClaimsCtrl">
+						<div class="row">
+							<div class="col-xs-6">
+								<div class="input-group">
+									<div class="col-sm-12 margin-top-5">
+										<span>Show <select style="border-radius: 2px;"
+											data-ng-init="numPerPage = paginationOptions[0]"
+											data-ng-model="numPerPage" data-ng-change="filter()"
+											data-ng-options="x for x in paginationOptions"></select>
+											entries
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-6">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-search"></i></span> <input type="text"
+										class="form-control" placeholder="Enter Search Text"
+										data-ng-model="searchText" data-ng-change="filter()" />
+								</div>
+							</div>
+						</div>
+
+						<div class="row margin-top-10 table-responsive">
+							<div class="col-md-12">
+								<table class="table table-hover table-condensed table-bordered">
+									<thead>
+										<tr class="active">
+											<th><a
+												data-ng-click="sortType = 'submittedClaimID'; sortDescending = !sortDescending; filter()">
+													Claim Number <span
+													data-ng-show="sortType == 'submittedClaimID' && !sortDescending"
+													class="fa fa-caret-down"></span> <span
+													data-ng-show="sortType == 'submittedClaimID' && sortDescending"
+													class="fa fa-caret-up"></span>
+											</a></th>
+											<th><a
+												data-ng-click="sortType = 'data1.damageDate'; sortDescending = !sortDescending; filter()">
+													Damage Date <span
+													data-ng-show="sortType == 'data1.damageDate' && !sortDescending"
+													class="fa fa-caret-down"></span> <span
+													data-ng-show="sortType == 'data1.damageDate' && sortDescending"
+													class="fa fa-caret-up"></span>
+											</a></th>
+											<th><a
+												data-ng-click="sortType = 'data1.desc'; sortDescending = !sortDescending; filter()">
+													Description <span
+													data-ng-show="sortType == 'data1.desc' && !sortDescending"
+													class="fa fa-caret-down"></span> <span
+													data-ng-show="sortType == 'data1.desc' && sortDescending"
+													class="fa fa-caret-up"></span>
+											</a></th>
+											<th><a
+												data-ng-click="sortType = 'data1.city'; sortDescending = !sortDescending; filter()">
+													City <span
+													data-ng-show="sortType == 'data1.city' && !sortDescending"
+													class="fa fa-caret-down"></span> <span
+													data-ng-show="sortType == 'data1.city' && sortDescending"
+													class="fa fa-caret-up"></span>
+											</a></th>
+											<th><a
+												data-ng-click="sortType = 'data1.state'; sortDescending = !sortDescending; filter()">
+													State <span
+													data-ng-show="sortType == 'data1.state' && !sortDescending"
+													class="fa fa-caret-down"></span> <span
+													data-ng-show="sortType == 'data1.state' && sortDescending"
+													class="fa fa-caret-up"></span>
+											</a></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr data-ng-repeat="row in filteredRT | filter: paginate ">
+											<td><a style="cursor: pointer;"
+												data-ng-click="navigateClaim(row.nonSubClaimID)">{{row.submittedClaimID}}</a></td>
+											<td>{{row.data1.damageDate | date}}</td>
+											<td>{{row.data1.desc}}</td>
+											<td>{{row.data1.city}}</td>
+											<td>{{row.data1.state}}</td>
+										</tr>
+									</tbody>
+									<tfoot>
+										<tr>
+											<td colspan="6" class="text-right">Showing page
+												{{currentPage}} of {{numPages}}</td>
+										</tr>
+									</tfoot>
+								</table>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<uib-pagination class="pagination-sm" total-items="totalItems"
+									max-size="maxSize" items-per-page="numPerPage"
+									num-pages="numPages" data-ng-model="currentPage"
+									boundary-links="true" rotate="false"></uib-pagination>
+							</div>
+						</div>
+					</div>
+				</div>
+				</uib-accordion>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<!-- <div class="row"  data-ng-controller="NonSubmittedClaimsCtrl">
+				<section class="widget bg-red-widget text-white">
+					<div class="widget-body clearfix">
+						<div class="row">
+							<div class="col-xs-3">
+								<span class="widget-icon"><i
+									class="glyphicon glyphicon-user"></i></span>
+							</div>
+							<div class="col-xs-9">
+								<div>
+									<div>
+										<h5 class="no-margin">Non Submitted Claims</h5>
+										<p class="h2 no-margin fw-normal">{{totalItems}}</p>
+									</div>
+									<div class="slide"
+							style="transform: translate(0%, -100%) translateZ(0px); transition-duration: 750ms; transition-property: transform; transition-timing-function: ease;">
+							<h5 class="no-margin">VISITS YESTERDAY</h5>
+							<p class="h2 no-margin fw-normal">11,885</p>
+						</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-6">
+								<h5 class="no-margin">In last 30 days</h5>
+								<div>
+									<div class="slide active"
+										style="transition-property: transform; transition-duration: 750ms; transition-timing-function: ease; transform: translate(0%, 0%) translateZ(0px);">
+										<p class="value4">137</p>
+									</div>
+									<div class="slide"
+							style="transform: translate(0%, -100%) translateZ(0px); transition-duration: 750ms; transition-property: transform; transition-timing-function: ease;">
+							<p class="value4">20.1%</p>
+						</div>
+								</div>
+							</div>
+							<div class="col-xs-6">
+								<h5 class="no-margin">In last one year</h5>
+								<div>
+									<div class="slide active"
+										style="transition-property: transform; transition-duration: 750ms; transition-timing-function: ease; transform: translate(0%, 0%) translateZ(0px);">
+										<p class="value4">1,221</p>
+									</div>
+									<div class="slide"
+							style="transform: translate(0%, -100%) translateZ(0px); transition-duration: 750ms; transition-property: transform; transition-timing-function: ease;">
+							<p class="value4">2.3%</p>
+						</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div> -->
+			<div class="row" data-ng-controller="PieChartCtrl">
+			<section class="widget  text-black"  style="margin-bottom: 1 px;">
+				<div google-chart chart="myChartObject" style="height:150px; width:100%;" on-select="seriesSelected(selectedItem)"></div>
+			</section>
+			</div>
+			<!-- <div class="row"   data-ng-controller="SubmittedClaimsCtrl">
+				<section class="widget bg-green-widget text-white">
+					<div class="widget-body clearfix">
+						<div class="row">
+							<div class="col-xs-3">
+								<span class="widget-icon"><i
+									class="glyphicon glyphicon-user"></i></span>
+							</div>
+							<div class="col-xs-9">
+								<div>
+									<div>
+										<h5 class="no-margin">Submitted Claims</h5>
+										<p class="h2 no-margin fw-normal">{{totalItems}}</p>
+									</div>
+									<div class="slide"
+							style="transform: translate(0%, -100%) translateZ(0px); transition-duration: 750ms; transition-property: transform; transition-timing-function: ease;">
+							<h5 class="no-margin">VISITS YESTERDAY</h5>
+							<p class="h2 no-margin fw-normal">11,885</p>
+						</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-6">
+								<h5 class="no-margin">In last 30 days</h5>
+								<div>
+									<div class="slide active"
+										style="transition-property: transform; transition-duration: 750ms; transition-timing-function: ease; transform: translate(0%, 0%) translateZ(0px);">
+										<p class="value4">129</p>
+									</div>
+									<div class="slide"
+							style="transform: translate(0%, -100%) translateZ(0px); transition-duration: 750ms; transition-property: transform; transition-timing-function: ease;">
+							<p class="value4">20.1%</p>
+						</div>
+								</div>
+							</div>
+							<div class="col-xs-6">
+								<h5 class="no-margin">In last one year</h5>
+								<div>
+									<div class="slide active"
+										style="transition-property: transform; transition-duration: 750ms; transition-timing-function: ease; transform: translate(0%, 0%) translateZ(0px);">
+										<p class="value4">1,217</p>
+									</div>
+									<div class="slide"
+							style="transform: translate(0%, -100%) translateZ(0px); transition-duration: 750ms; transition-property: transform; transition-timing-function: ease;">
+							<p class="value4">2.3%</p>
+						</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+			 -->
+			<div class="row" data-ng-controller="GenericChartCtrl">
+			<section class="widget  text-black"  style="margin-bottom: 1 px;">
+				<div google-chart chart="myChartObject" style="height:200px; width:100%;" on-select="seriesSelected(selectedItem)"></div>
+			</section>
+			</div>
+			<div class="row" data-ng-controller="FeedController">
+				<section class="widget  text-black"  style="margin-bottom: 1 px;">
+						
+						<div class="row">
+					
+						<a ng-repeat="item in myTickerItems" class="item-{{$index}}">
+							<div class="col-xs-2">
+							<span class="glyphicon glyphicon-user"></span>
+							</div>
+							
+								<div class="col-xs-10" style="padding-left: -10;">
+									<div >
+										
+	   									  <h5 class="no-margin">  {{item.title}}</h5>
+	   									  <p class="no-margin fw-normal">{{item.copy}}</p>
+	   								</div>
+								</div>
+								<hr/>
+								</a>
+							
+							</div>
+	
+				</section>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div>
+	 <script type="text/ng-template" id="createView.html"> 
+			<div class="modal-header">
+				<h3 class="modal-title">Create View</h3>
+			</div>
+			<div class="modal-body">
+				
+			<div class="row col-sm-12">
+				<label for="viewName" class="col-sm-3">View Name:</label>
+					<div class="col-sm-9">
+						<input id="viewName" data-ng-model="viewName" type="text" placeholder="Enter View Name" class="form-control radius-top-bot">
+						<input type="text" style="display:none" data-ng-model="viewId"/>
+					</div>
+			</div>
+			<br/><br/>
+			<div class="row col-sm-12">
+				<div class="col-sm-6">
+					Created By: <u>Firstname Lastname</u>, 7/20/2017 3:19PM
+				</div>
+				<div class="col-sm-6">
+					Modified By: <u>Firstname Lastname</u>, 7/25/2017 4:40PM
+				</div>
+			</div>
+			<br/><br/><br/><br/>
+
+
+			<div class="row col-sm-12">
+				<div class="col-sm-3">
+					Select Fields To Display
+				</div>
+				<div class="col-sm-9">
+				<multiselect data-ng-model="selectedColumns" options="availableColumns" id-prop="key" display-prop="value"></multiselect>
+				</div>
+			</div>
+			<br/><br/><br/><br/>
+			<div class="row col-sm-12">
+				<div class="col-sm-3">
+					Restrict Visibility
+				</div>
+				<div class="col-sm-9">
+					 <label>
+   						 <input type="radio" ng-model="visibility" value="self">
+   						 Visibile only to <i>me</i>
+  						</label><br/>
+  					 <label>
+    				 	<input type="radio" ng-model="visibility" ng-vialue="all">
+   					 	Visible to <i>all users</i> ( Includes partner and customer portal users)
+  					 </label><br/>
+  					 <label>
+    					<input type="radio" ng-model="visibility" value="group">
+    					Visible to certain <i>group of users</i>
+  					 </label><br/>
+				</div>
+			</div>
+
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" type="button" ng-click="createView()">Create</button>
+				<button class="btn btn-primary" type="button" ng-click="close()">Close</button>
+			</div>
+	 </script>
+</div>
+
+<div>
+	<script type="text/ng-template" id="vehicleInvolved.html">
+		<div class="modal-header">
+			<h3 class="modal-title">Create Claim</h3>
+		</div>
+		<div class="modal-body">
+			<div class="row col-sm-12">
+				<label for="vehicleInvolved" class="col-sm-4 control-label">Is Company Vehicle Involved</label>
+					<div class="col-sm-8">
+						<select id="" class="form-control radius-top-bot" ng-model="vehicleInvolved" ng-options="so for so in selectOptions">
+							<option value="">Select</option>
+						</select>
+					</div>
+				<div class="col-sm-12 colorRed">
+					(This includes objects falling off of or out of vehicle)
+				</div>
+			</div>
+			<div class="row col-sm-12 margin-top-10" data-ng-show="vehicleInvolved=='No'">
+				<label for="nonCompanyProperty" class="col-sm-4 control-label">Damage Done to Non Company Property</label>
+					<div class="col-sm-8">
+							<select id="" class="form-control radius-top-bot" ng-model="nonCompanyProperty" ng-options="so for so in selectOptions">
+								<option value="">Select</option>
+							</select>
+					</div>
+				<div class="col-sm-12 colorRed">
+					(Caused by AT&T, i.e., tech tracked mud on carpet)
+				</div>
+			</div>
+			<div class="row col-sm-12 margin-top-10" data-ng-show="nonCompanyProperty=='No' && vehicleInvolved=='No'">
+				<label for="CompanyProperty" class="col-sm-4 control-label">Damage Done to Company Property</label>
+					<div class="col-sm-8">
+							<select id="" class="form-control radius-top-bot" ng-model="CompanyProperty" ng-options="so for so in selectOptions">
+								<option value="">Select</option>
+							</select>
+					</div>
+			</div>
+			<div class="row col-sm-12" data-ng-show="nonCompanyProperty=='No' && vehicleInvolved=='No'">
+				<label for="typeOfPropertyDamage" class="col-sm-4 control-label">Type of Property Damage</label>
+					<div class="col-sm-8">
+<select id="typeOfDamages" class="form-control radius-top-bot"
+        data-ng-model="typeOfDmg" data-ng-options="td for td in typeOfDamages">
+    <option value="">-- Choose --</option>
+</select>
+					</div>
+				<div class="col-sm-12 colorRed">
+					(This includes damage to Company Vehicle)
+				</div>
+			</div>
+			<div class="row col-sm-12 margin-top-10" data-ng-show="nonCompanyProperty=='No' && vehicleInvolved=='No' && CompanyProperty=='Yes'">
+				<label for="selectCompany" class="col-sm-4 control-label">Select Your Company</label>
+					<div class="col-sm-8">
+<select id="typeOfDamages" class="form-control radius-top-bot"
+        data-ng-model="comp" data-ng-options="td for td in company">
+    <option value="">-- Choose --</option>
+</select>
+ 
+					</div>
+				<div class="col-sm-12 colorRed">
+					Verify Company that incurred the damage and make selection in drop down list if different than your payroll company
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+				<button class="btn btn-primary" type="button" data-ng-show="nonCompanyProperty=='No' && vehicleInvolved=='No' && CompanyProperty=='Yes'" ng-click="next()">Proceed To Enter Claim Information</button>
+				<button class="btn btn-default" type="button" ng-click="close()">Return</button>
+		</div>
+	</script>
+</div>
+
+<div>
+	<script type="text/ng-template" id="submitClaim.html">
+			<div class="modal-header">
+				<h3 class="modal-title">Submit Claim</h3>
+			</div>
+			<div class="modal-body">
+				<div class="row margin-bottom-5">
+					<div class="col-sm-12">
+						<p>Submitted Claim ID: <strong>{{submittedClaimId}}</strong> is created successfully</p>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" type="button" ng-click="submitNext()">Continue</button>
+			</div>	 
+	</script>
+</div>
+
+
+<div>
+	<script type="text/ng-template" id="removeClaimConfirmation.html">
+			<div class="modal-header">
+				<h3 class="modal-title">Delete Claim</h3>
+			</div>
+			<div class="modal-body">
+				<div class="row margin-bottom-5">
+					<div class="col-sm-12">
+						<p>Do you want to delete claim: <strong class="att-orange">{{claimTobeRemoved}}</strong> ?</p>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default" type="button" ng-click="removeCancel()">Cancel</button>
+				<button class="btn btn-primary" type="button" ng-click="removeConfirm()">Delete</button>
+			</div>	 
+	</script>
+</div>
+
+
+<div>
+	<script type="text/ng-template" id="nonCompanyProperty.html">
+		<div class="modal-header">
+			<h3 class="modal-title">Create Claim</h3>
+		</div>
+		<div class="modal-body">
+			<div class="row margin-bottom-5">
+				<div class="col-sm-12">
+					<div class="margin-bottom-10">
+						<label for="">Damage Done to Non Company Property</label> 
+							<select id="" class="form-control radius-top-bot" ng-model="nonCompanyProperty" ng-options="so for so in selectOptions">
+								<option value="">Select</option>
+							</select>
+					</div>
+				</div>
+			</div>
+			<div class="row margin-bottom-5 colorRed">
+				<div class="col-sm-12">
+					(Caused by AT&T, i.e., tech tracked mud on carpet)
+				</div>
+			</div>	
+		</div>
+		<div class="modal-footer">
+				<button class="btn btn-primary" type="button" ng-click="next()">Next</button>
+				<button class="btn btn-default" type="button" ng-click="cancel()">Back</button>
+		</div>
+	</script>
+</div>
+
+<div>
+	<script type="text/ng-template" id="CompanyProperty.html">
+		<div class="modal-header">
+			<h3 class="modal-title">Create Claim</h3>
+		</div>
+		<div class="modal-body">
+			<div class="row margin-bottom-5">
+				<div class="col-sm-6">
+					<div class="margin-bottom-10">
+						<label for="">Damage Done to Company Property</label> 
+							<select id="" class="form-control radius-top-bot" ng-model="CompanyProperty" ng-options="so for so in selectOptions">
+								<option value="">Select</option>
+							</select>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="margin-bottom-10">
+						<label for="">Type of Property Damage</label> 
+							<select id="" class="form-control radius-top-bot" ng-model="CompanyProperty1">
+								<option value="">Select</option>
+							</select>
+					</div>
+				</div>
+			</div>
+			<div class="row margin-bottom-5 colorRed">
+				<div class="col-sm-12">
+					(This includes damage to Company Vehicle)
+				</div>
+			</div>	
+		</div>
+		<div class="modal-footer">
+				<button class="btn btn-primary" type="button" ng-click="next()">Next</button>
+				<button class="btn btn-default" type="button" ng-click="cancel()">Back</button>
+		</div>
+	</script>
+</div>
+
+<div>
+	<script type="text/ng-template" id="selectCompany.html">
+		<div class="modal-header">
+			<h3 class="modal-title">Create Claim</h3>
+		</div>
+		<div class="modal-body">
+			<div class="row margin-bottom-5">
+				<div class="col-sm-12">
+					<div class="margin-bottom-10">
+						<label for="">Select Your Company</label> 
+							<select id="" class="form-control radius-top-bot" ng-model="selectCompany">
+								<option value="">Select</option>
+							</select>
+					</div>
+				</div>
+			</div>
+			<div class="row margin-bottom-5 colorRed">
+				<div class="col-sm-12">
+					Verify Company that incurred the damage and make selection in drop down list if different than your payroll company
+				</div>
+			</div>	
+		</div>
+		<div class="modal-footer">
+				<button class="btn btn-primary" type="button" ng-click="close()">Next</button>
+				<button class="btn btn-default" type="button" ng-click="cancel()">Back</button>
+		</div>
+	</script>
+</div>
+
+<script type="text/ng-template" id="advancedSearchModal.html">
+                    <div class="modal-header">
+                        <button aria-hidden="true" class="close" data-dismiss="modal" type="button" ng-click="close()">x
+                        </button>
+                        <h3 class="modal-title">Advanced Search</h3>
+                    </div>
+                    <div  class="modal-body">
+                        <ng-form class="form-horizontal">
+                            <div class="form-group">
+                                <div class="btn-group" style="padding-left: 20px;padding-top: 10px;">
+
+                                    <label class="btn btn-default" ng-checked="queryFields.match!='any'"
+                                           ng-model="queryFields.match" uib-btn-radio="'all'"  style="font-size:10px" >Match All</label>
+
+                                    <label class="btn btn-default" ng-model="queryFields.match"
+                                           uib-btn-radio="'any'" style="font-size:10px">Match Any</label>
+                                </div>
+                            </div>
+                            <div data-ng-repeat="qField in advancedSearchFieldsList track by $index"
+                                 ng-init="fieldIndex = $index">
+                                <div class="form-group"
+                                     data-ng-repeat="f in queryFields.fields[fieldIndex] track by $index">
+                                    <label class="col-sm-2 control-label" for="state"
+                                           style="text-align: right">{{queryFields.fields[fieldIndex][$index].displayName}}
+                                    </label>
+                                    <div class="col-sm-3">
+                                        <select class="form-control radius-top-bot"
+                                                data-ng-model="queryFields.fields[fieldIndex][$index].criteria"
+                                                data-ng-options="id for id in queryFields.fields[fieldIndex][$index].criteriaType"
+												style="font-size:10px; height:27.6px">
+                                            <option value="">-- Criteria --</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4"
+                                         ng-if="queryFields.fields[fieldIndex][$index].fieldType==1 && queryFields.fields[fieldIndex][$index].criteria != 'Is Blank' && queryFields.fields[fieldIndex][$index].criteria != 'Is Not Blank' || queryFields.fields[fieldIndex][$index].criteria === 'Contains' || queryFields.fields[fieldIndex][$index].criteria === 'Not Contains' || queryFields.fields[fieldIndex][$index].criteria === 'Starts With' || queryFields.fields[fieldIndex][$index].criteria === 'Ends With'">
+                                        <input type="text" class="form-control"
+                                               data-ng-model="queryFields.fields[fieldIndex][$index].value1" style="font-size:10px; height:27.6px">
+                                    </div>
+
+                                    <div class="col-sm-4"
+                                         ng-if="queryFields.fields[fieldIndex][$index].fieldType==2 && queryFields.fields[fieldIndex][$index].criteria != 'Is Blank' && queryFields.fields[fieldIndex][$index].criteria != 'Is Not Blank' && queryFields.fields[fieldIndex][$index].criteria != 'Contains' && queryFields.fields[fieldIndex][$index].criteria != 'Not Contains' && queryFields.fields[fieldIndex][$index].criteria != 'Starts With' && queryFields.fields[fieldIndex][$index].criteria != 'Ends With'">
+                                        <multiselect data-ng-model="queryFields.fields[fieldIndex][$index].value1"
+                                                     options="queryFields.fields[fieldIndex][$index].multiSelect" style="font-size:10px"></multiselect>
+
+                                    </div>
+
+                                    <div class="col-sm-2 md-inline-form"
+                                         ng-if="queryFields.fields[fieldIndex][$index].fieldType==3 && queryFields.fields[fieldIndex][$index].criteria != 'Is Blank' && queryFields.fields[fieldIndex][$index].criteria != 'Is Not Blank'">
+                                        <md-datepicker id="arrivalDate"
+                                                       data-ng-model="queryFields.fields[fieldIndex][$index].value1"
+                                                       md-placeholder="Enter date" style="font-size:10px"></md-datepicker>
+                                    </div>
+                                    <div class="col-sm-2 md-inline-form"
+                                         ng-if="queryFields.fields[fieldIndex][$index].fieldType==3 && ddDateOptions.indexOf(queryFields.fields[fieldIndex][$index].criteria)==8 || ddDateOptions.indexOf(queryFields.fields[fieldIndex][$index].criteria)==9">
+                                        <md-datepicker id="arrivalDate"
+                                                       data-ng-model="queryFields.fields[fieldIndex][$index].value2"
+                                                       md-placeholder="End date"></md-datepicker>
+                                    </div>
+
+                                    <div class="col-sm-1"></div>
+
+                                    <div class="col-sm-1" ng-if="queryFields.fields[fieldIndex][$index].isDefault!=1"
+                                         style="padding-Left: 0px;">
+                                        <a ng-click="remove($index,fieldIndex)">
+                                            <span class="glyphicon glyphicon-remove" style="padding-top: 10px;color:red;"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+								<label class="col-sm-4 control-label" for="state"
+                                           style="text-align: right">Add Search Criteria
+                                </label>
+                                <div class="col-sm-4">
+                                    <select id="statusID" class="form-control radius-top-bot"
+                                            data-ng-model="addField.selection"
+                                            data-ng-options="id.displayName for id in advancedSearchFieldsList"
+                                            ng-change="addFieldToForm()" style="font-size:10px; height:27.6px">
+                                        <option value="">-- Add Fields--</option>
+                                    </select>
+                                </div>
+
+                            </div>
+							<!-- <div class="form-group">
+								<div class="col-sm-2"></div>
+                                <div class="col-sm-3" style="align: right; padding-left: 45px;">
+                                    <button class="btn btn-default" data-ng-disabled="show==11"
+                                            data-ng-click="clickQuery()" style="font-size:10px">
+                                        <b>Search</b>
+                                    </button>
+                                </div>
+                            </div> -->
+
+                        </ng-form>
+                    </div>
+		<div class="modal-footer" style="text-align:center">
+				<button class="btn btn-default" data-ng-click="close()">Cancel</button>
+				<button class="btn btn-primary" data-ng-disabled="show==11" data-ng-click="clickQuery()">Search</button>
+		</div>
+        <style>
+        .md-datepicker-calendar-pane{
+        z-index: 1200}
+
+        .md-datepicker-button{
+            padding-left: 0px;
+        }
+
+        div.md-datepicker-input-container{
+             width: 50px;
+            margin-left: 0px !important;
+        }
+		.md-datepicker-input{
+			font-size:10px;
+		}
+
+.modal-header {
+     padding:9px 15px;
+     border-bottom:1px solid #eee;
+     background-color: #204d74;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+     color:whitesmoke;
+ }
+         </style>
+</script>

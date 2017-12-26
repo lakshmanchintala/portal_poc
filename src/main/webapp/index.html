@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 
+<html lang="en" class="ie8">
+   <![endif]-->
+<!--[if IE 9]> 
+   <html lang="en" class="ie9">
+      <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<title>Risk Management</title>
+<!-- Meta -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<!-- Favicon -->
+<link rel="shortcut icon" href="favicon.ico">
+<!-- Web Fonts -->
+<link rel='stylesheet' type='text/css'
+	href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
+<link rel="stylesheet"
+	href="assets/plugins/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="assets/plugins/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/plugins/rui-icons.css">
+<link rel="stylesheet" href="assets/css/custom.css">
+<link rel="stylesheet" href="assets/css/app.css">
+<link rel="stylesheet" href="assets/css/wizards.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link type="text/css"
+	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/redmond/jquery-ui.css"
+	rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<!-- Upload and Gallery  -->
+  <link rel="stylesheet" href="assets/css/album.css">
+  
+  <!-- Generic page styles -->
+<!-- <link rel="stylesheet" href="assets/css/upload/style.css"> -->
+<!-- blueimp Gallery styles -->
+<link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+<!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+<link rel="stylesheet" href="assets/css/upload/jquery.fileupload.css">
+<link rel="stylesheet" href="assets/css/upload/jquery.fileupload-ui.css">
+<!-- CSS adjustments for browsers with JavaScript disabled -->
+<noscript><link rel="stylesheet" href="assets/css/upload/jquery.fileupload-noscript.css"></noscript>
+<noscript><link rel="stylesheet" href="assets/css/upload/jquery.fileupload-ui-noscript.css"></noscript>
+
+<link rel="stylesheet" href="assets/css/editViewClaim.css">
+
+<!-- End of upload and gallery -->
+
+
+	
+	
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+<!-- DataTables -->
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.9.4/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8"
+	src="https://cdn.datatables.net/1.9.4/js/jquery.dataTables.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-aria.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-animate.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
+	<script type="text/javascript" src="assets/plugins/bootstrap/js/ui-bootstrap-tpls-1.1.0.min.js"></script>
+
+
+	<!-- UiGrid Dependencies -->
+	<script src="scripts/js/ui-grid.min.js"></script>
+	<script src="http://ui-grid.info/release/ui-grid.js"></script>
+	<script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
+	<script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
+	<script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
+	<link rel="stylesheet" href="http://ui-grid.info/release/ui-grid.css" type="text/css">
+	<script src="scripts/js/xeditable.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-touch.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.9.12/xlsx.full.min.js"></script>
+	
+	<script src="scripts/js/angular-material.min.js"></script>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+	
+	 <!-- <style type="text/css">
+        html, body, #map_canvas {
+            height: 100%;
+            width: 100%;
+            margin: 0px;
+        }
+
+        #map_canvas {
+            position: relative;
+        }
+
+        .angular-google-map-container {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+    </style> -->
+</head>
+<body data-ng-app="attRiskManagementApp"
+	data-ng-controller="attRiskManagementController">
+	<div class="bg-body">
+		<header class="att_header" data-ng-hide="hideheader">
+			<nav class="navbar navbar-inverse navbar-default navbar-fixed-top ">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a style="cursor: pointer;" data-ng-click="saveClaim()" class="att_logo_wrapper"> <span
+							class="att_logo"><img src="assets/img/ATT_Sprite_Logo.PNG"
+								width="38px" height="38px" /></span> <span class="logo_title">AT&T</span>
+						</a> <span class="main_nav">Claims Administration Management System</span>
+					</div>
+					<span ng-show="loggedIn === true" class="pull-right margin color-white">Welcome {{username}}</span>
+				</div>
+			</nav>
+		</header>
+		<!-- 		<div class="headerLine">
+			<a class="margin attDarkBlue pull-right" href="#/dashboard">Show
+				Claims for Another User</a>
+		</div> -->
+		<div class="container content-xs" class="containerContent">
+			<div data-ng-view></div>
+		</div>
+		<!--                <section data-ng-view id="content-section" class="container-fluid"></section> -->
+		<footer class="att_footer text-center"
+			data-ng-class="{'fixed_footer_bottom':isFooterFixed}"
+			data-ng-hide="hidefooter">
+			<p class="text-center small"
+				style="font-size: 12px; margin-bottom: 0">For questions
+				regarding this website contact the Risk Management Office at
+				800-894-0374</p>
+			<p class="" style="font-size: 11px; margin-bottom: 0">Please
+				bookmark this link for future claim entry</p>
+		</footer>
+	</div>
+	<!-- JS Global Compulsory -->
+	<!-- 	<script type="text/javascript"
+		src="assets/plugins/jquery/jquery.min.js"></script> -->
+	<script type="text/javascript"
+		src="assets/plugins/jquery/jquery-migrate.min.js"></script>
+	<!-- 	<script type="text/javascript"
+		src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> -->
+	<!-- JS Implementing Plugins -->
+	<script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
+	<script type="text/javascript" src="assets/plugins/smoothScroll.js"></script>
+	<script type="text/javascript" src="assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>
+	<!-- 	<script type="text/javascript"
+		src="assets/plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js"></script> -->
+	<!-- JS Customization -->
+	<script type="text/javascript" src="assets/js/custom.js"></script>
+	<!-- JS Page Level -->
+	<script type="text/javascript" src="assets/js/app.js"></script>
+	<script type="text/javascript"></script>
+	
+	
+
+
+	
+	
+	<!-- Angular JS -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-cookies.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+	<!-- 		  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-animate.min.js"></script>
+	<script type="text/javascript"
+		src="assets/plugins/bootstrap/js/ui-bootstrap-tpls-1.1.0.min.js"></script> -->
+	<!-- 		  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.3/ui-bootstrap-tpls.min.js"></script> -->
+	<script src="https://cdn.rawgit.com/zenorocha/clipboard.js/master/dist/clipboard.min.js"></script>
+	<script src="assets/plugins/ngclipboard.js"></script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="scripts/app.js"></script>
+	<script type="text/javascript" src="scripts/services/claimsService.js"></script>
+	<script type="text/javascript" src="scripts/directives/directives.js"></script>
+	<script type="text/javascript" src="scripts/filters/map_colors.js"></script>
+	<script type="text/javascript" src="scripts/controllers/usMap.js"></script>
+	<script type="text/javascript" src="scripts/controllers/plotMapCntrl.js"></script>
+	
+		
+<!-- 	<script type="text/javascript" src="scripts/controllers/UIMapCntrl.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+    <script src="https://rawgit.com/nmccready/angular-simple-logger/master/dist/angular-simple-logger.js"></script> -->
+    <!-- <script src="http://rawgit.com/angular-ui/angular-google-maps/master/dist/angular-google-maps.js"></script> -->
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCO5CBF2pd1U24cI7GTz6KP9gA-JlJI-0w&sensor=false&libraries=places&language=en"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-chart/0.1.0/ng-google-chart.js" type="text/javascript"></script>
+    <script type="text/javascript" src="scripts/js/ngAutocomplete.js"></script>
+    <script type="text/javascript" src="scripts/js/ng-google-chart.js"></script>
+    <!-- <script src="http://www.google.com/jsapi?ext.js"></script> -->
+	<script type="text/javascript" src="scripts/controllers/claimsDatatable.js"></script>
+	<script type="text/javascript" src="scripts/controllers/googleChartCntrl.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+		
+	<script type="text/javascript" src="scripts/controllers/FeedController.js"></script>
+	<script type="text/javascript" src="scripts/js/angular_bootstrap_multiselect.js"></script>	
+	
+	<script type="text/javascript" src="scripts/controllers/editViewClaim.js"></script>
+
+</body>
+</html>

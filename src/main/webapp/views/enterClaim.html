@@ -1,0 +1,168 @@
+<div ng-controller="newClaimController">
+  <div class="alert alert-warning alert-dismissable" ng-if="!tabs.data1">
+    <a  class="close" data-dismiss="alert" aria-label="close">x</a>
+    <strong class="text-danger">Warning!</strong> 
+    <span class="text-danger">Please Remember, UPLOAD PHOTOS, It is very important to take good photos on all damages
+    and load then on this website under the Photo tab or forward them to Risk Management, for use in claims settlement and collection activities.
+  </span>
+  </div>
+  
+   <div class="row" style="margin-top: -50px;">
+      <div class="col-sm-12">
+         <div class="wizard">
+            <div class="wizard-inner">
+               <div class="connecting-line"></div>
+               <ul class="nav nav-tabs" role="tablist">
+
+                  <li role="presentation" data-ng-class="{active: show==1}"><a ng-click="click(1)"
+                     data-toggle="tab" role="tab"> <span class="round-tab"
+                        ng-class="damageValidation ? 'validation' : 'round-tab'">
+                           <i class="material-icons">whatshot</i>
+                           <p>Damage</p>
+                     </span>
+                  </a></li>
+
+                  <li role="presentation" data-ng-class="{active: show==2}"><a ng-click="click(2)"
+                     data-toggle="tab" role="tab"> <span class="round-tab"
+                        ng-class="bInfoValidation ? 'validation' : 'round-tab'">
+                           <i class="material-icons">attach_money</i><b>Demand To
+                              Information</b>
+                     </span>
+                  </a></li>
+                  <li role="presentation" data-ng-class="{active: show==3}"><a ng-click="click(3)"
+                     data-toggle="tab" role="tab"> <span class="round-tab">
+                           <i class="material-icons">visibility</i>
+                           <p>Witnesses</p>
+                     </span>
+                  </a></li>
+
+                  <li role="presentation" data-ng-class="{active: show==4}"><a ng-click="click(4)"
+                     data-toggle="tab" role="tab"> <span class="round-tab">
+                           <i class="material-icons">domain</i><b>Damaged Facilities</b>
+                     </span>
+                  </a></li>
+                  <li role="presentation" data-ng-class="{active: show==5}"><a ng-click="click(5)"
+                     data-toggle="tab" role="tab"> <span class="round-tab">
+                           <i class="material-icons md-48">people</i><b>Responsible
+                              Party</b>
+                     </span>
+                  </a></li>
+
+                  <li role="presentation" data-ng-class="{active: show==6}"><a ng-click="click(6)"
+                     data-toggle="tab" role="tab"> <span class="round-tab">
+                           <i class="material-icons md-48">location_on</i>
+                           <p>Locates</p>
+                     </span>
+                  </a></li>
+                  <li role="presentation" data-ng-class="{active: show==7}"><a ng-click="click(7)"
+                     data-toggle="tab" role="tab"> <span class="round-tab">
+                           <i class="material-icons md-48">build</i>
+                           <p>Repairs</p>
+                     </span>
+                  </a></li>
+
+                  <li role="presentation" data-ng-class="{active: show==8}"><a ng-click="click(8)"
+                     data-toggle="tab" role="tab"> <span class="round-tab">
+                           <i class="material-icons md-48">access_time</i>
+                           <p>Time</p>
+                     </span>
+                  </a></li>
+                  <li role="presentation" data-ng-class="{active: show==9}"><a ng-click="click(9)"
+                     data-toggle="tab" role="tab"> <span class="round-tab">
+                           <i class="material-icons">settings_input_component</i>
+                           <p>Materials</p>
+                     </span>
+                  </a></li>
+                  <li role="presentation" data-ng-class="{active: show==10}"><a ng-click="click(10)"
+                     data-toggle="tab" role="tab"> <span class="round-tab">
+                           <i class="material-icons md-48">insert_comment</i></i>
+                           <p>Remarks</p>
+                     </span>
+                  </a></li>
+                  <li role="presentation" data-ng-class="{active: show==11}"><a ng-click="click(11)"
+                     data-toggle="tab" role="tab"> <span class="round-tab">
+                           <i class="material-icons">add_a_photo</i>
+                           <p>Photos</p>
+                     </span>
+                  </a></li>
+               </ul>
+            </div>
+         </div>
+         <div class="form-actions">
+            <div class="row">
+               <div class="col-sm-8 col-xs-12">
+                  <span ng-if="!tabs.isSubmitted">
+                  
+                  <strong>Non Submitted Claim ID: </strong><b class="att-orange">{{tabs.nonSubClaimID}} </b>
+                  </span>
+                  <span ng-if="tabs.isSubmitted">
+                  
+                  <strong>Submitted Claim ID: </strong><b class="att-orange">{{tabs.submittedClaimID}}  </b>
+                  </span>
+               </div>
+               <div class="col-sm-4 col-xs-12">
+                  <div class="col-sm-6 col-xs-6">
+                     <button class="btn btn-green text-white" data-ng-click="submitClaim()">
+                        <i class="fa fa-paper-plane"></i> <b>Submit Claim</b>
+                     </button>
+                  </div>
+                  <div class="col-sm-2 col-xs-2">
+                     <a class="btn btn-default" data-ng-click="saveClaim()"> <i
+                        class="fa fa-home att-blue"></i>
+                     </a>
+                  </div>
+                  <div class="col-sm-2 col-xs-2">
+                     <button ng-click="printClaim()" class="btn btn-default">
+                        <i class="fa fa-print att-blue"></i>
+                     </button>
+                  </div>
+                  <div class="col-sm-2 col-xs-2">
+                     <button class="btn btn-default">
+                        <i class="fa fa-refresh att-blue"></i>
+                     </button>
+                  </div>
+
+
+
+               </div>
+            </div>
+         </div>
+         <saving></saving>
+         <div class="row margin-top-10">
+            <div class="col-sm-12">
+               <div menu-tab1 ng-if="show==1"></div>
+               <div menu-tab2 ng-if="show==2"></div>
+               <div menu-tab3 ng-if="show==3"></div>
+               <div menu-tab4 ng-if="show==4"></div>
+               <div menu-tab5 ng-if="show==5"></div>
+               <div menu-tab6 ng-if="show==6"></div>
+               <div menu-tab7 ng-if="show==7"></div>
+               <div menu-tab8 ng-if="show==8"></div>
+               <div menu-tab9 ng-if="show==9"></div>
+               <div menu-tab10 ng-if="show==10"></div>
+               <div menu-tab11 ng-if="show==11"></div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="form-actions">
+      <div class="row">
+         <div class="col-sm-12 col-xs-12">
+            <div class="col-sm-4 col-xs-4">
+               <button class="btn btn-primary" data-ng-disabled="show==1" data-ng-click="click('prev')">
+                  <i class="fa fa-arrow-left"></i> <b>Previous</b>
+               </button>
+            </div>
+            <div class="col-sm-4 col-xs-4"></div>
+            <div class="col-sm-4 col-xs-4">
+               <div class="col-sm-9"></div>
+               <div class="col-sm-3">
+                  <button class="btn btn-primary" data-ng-disabled="show==11"  data-ng-click="click('next')">
+                     <i class="fa fa-arrow-right"></i> <b>Next</b>
+                  </button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

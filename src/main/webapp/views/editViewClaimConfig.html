@@ -1,0 +1,284 @@
+ 
+ <div >
+ <div class="modal-header">
+			<h3 class="modal-title">Claim View Configuration</h3>
+		</div>
+		<div class="modal-body">
+<div>
+<!-- 	<div class="row" data-ng-show="step == 1">
+		<div class="col-md-11 col-md-offset-1 ">
+			<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Claims</div>
+			<span class="glyphicon glyphicon-edit"></span> Edit View
+		</div>
+	</div> 
+	<div class="row" data-ng-show="step == 1">
+		<div class="col-md-12">
+			<hr class="hr-bd-color">
+		</div>
+	</div> -->
+	<div class="row" data-ng-show="false">
+		<div class="col-md-4 col-md-offset-6 action-btn-margin">
+			<button class="btn btn-default" ng-click="doSave()">Save</button>
+			<button class="btn btn-default"  ng-click="doSaveAs()">Save As</button>
+			<button class="btn btn-default" ng-click="doDelete()">Delete</button>
+			<button class="btn btn-default" ng-click="doCancel()">Cancel</button>
+		</div>
+	</div>
+	<form>
+		<div class="panel panel-info" data-ng-show="step == 1">
+			<div class="panel-heading">
+				<font class="pan-head-font">Step 1. Enter View Name</font>
+			</div>
+			<div class="panel-body">
+				<div class="form-inline form-group">
+					<label for="viewName">View Name: </label><input class="form-control" name="viewName" ng-model="viewNameData" placeholder="Enter View Name" required="required" type="text" />
+				</div>
+				<div>
+					<label>Created By:</label><a href="#">  {{creatorName}}</a>, {{createdDateTime}}<span><span class="mod-by-left-pad"> <label>Modified By:</label></span> </span><a href="#"> {{modifierName}}</a>, {{modDateTime}}
+				</div>
+			</div>
+
+		</div>
+
+		<div class="panel panel-info" data-ng-show="step == 2">
+			<div class="panel-heading">
+				<font class="pan-head-font">Step 2. Specify Filter Criteria</font>
+			</div>
+			<div class="panel-body">
+				<div class="pan-body-head-font">Filter By Owner</div>
+				<div class="radio">
+					<label><input type="radio" name="claimRadio">All Claims</label>
+				</div>
+				<div class="radio">
+					<label><input type="radio" name="claimRadio">My Claims</label>
+				</div>
+				<div class="radio">
+					<label><input type="radio" name="claimRadio">Queue</label>
+					<select class="selectpicker" ng-model="queueData" ng-init="queueData='none'">
+						<option value="none" selected>-- None --</option>
+						<option ng-repeat="opt in queueOptions" value="{{opt}}">{{opt}}</option>
+					</select>
+				</div>
+
+				<div class="pan-body-head-font">Filter By Additional Fields (Optional):</div>
+				<div class="row">
+					<div class="col-md-3 text-center">
+						<label>Field</label>
+
+					</div>
+					<div class="col-md-2 text-center">
+						<label>Operator</label>
+
+					</div>
+					<div class="col-md-3 text-center">
+						<label>Value</label>
+					</div>
+					<div class="col-md-1"></div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group">
+							<select class="selectpicker form-control" ng-model="fieldData1" ng-init="fieldData1='none'">
+								<option value="none" selected>-- None --</option>
+								<option ng-repeat="fldProp in fieldOptions" value="{{fldProp.key}}">{{fldProp.value}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="form-group">
+							<select class="selectpicker form-control" ng-model="operatorData1" ng-init="operatorData1='none'">
+								<option value="none" selected>-- None --</option>
+								<option ng-repeat="opProp in operatorOpotions" value="{{opProp.key}}">{{opProp.value}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<input class="form-control" type="text" ng-model="valueData1">
+						</div>
+					</div>
+					<div class="col-xs-1">
+						<label>AND</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group">
+							<select class="selectpicker form-control" ng-model="fieldData2" ng-init="fieldData2='none'">
+								<option value="none" selected>-- None --</option>
+								<option ng-repeat="fldProp in fieldOptions" value="{{fldProp.key}}">{{fldProp.value}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="form-group">
+							<select class="selectpicker form-control" ng-model="operatorData2" ng-init="operatorData2='none'">
+								<option value="none" selected>-- None --</option>
+								<option ng-repeat="opProp in operatorOpotions" value="{{opProp.key}}">{{opProp.value}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<input class="form-control" type="text" ng-model="valueData2">
+						</div>
+					</div>
+					<div class="col-xs-1">
+						<label>AND</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group">
+							<select class="selectpicker form-control" ng-model="fieldData3" ng-init="fieldData3='none'">
+								<option value="none" selected>-- None --</option>
+								<option ng-repeat="fldProp in fieldOptions" value="{{fldProp.key}}">{{fldProp.value}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="form-group">
+							<select class="selectpicker form-control" ng-model="operatorData3" ng-init="operatorData3='none'">
+								<option value="none" selected>-- None --</option>
+								<option ng-repeat="opProp in operatorOpotions" value="{{opProp.key}}">{{opProp.value}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<input class="form-control" type="text" ng-model="valueData3">
+						</div>
+					</div>
+					<div class="col-xs-1">
+						<label>AND</label>
+					</div>
+				</div>
+				<div>
+					<label><a>Add Filter Logic</a></label><br> <label>Select a filter language when using "starts with" or "contains" operators.</label>
+				</div>
+				<div class="row">
+					<label class="col-sm-2">Filter Language:</label>
+					<div class="col-sm-3">
+						<select class="selectpicker form-control" ng-model="langData" ng-init="langData='none'">
+							<option value="none" selected>-- None --</option>
+							<option ng-repeat="opProp in languageOptions" value="{{opProp.key}}">{{opProp.value}}</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-info" data-ng-show="step == 3">
+			<div class="panel-heading">
+				<font class="pan-head-font">Step 3. Select Fields to Display</font>
+			</div>
+			<div class="panel-body">
+
+				<div class="row">
+					<div class="col-xs-5 text-center">
+						<label>Available Fields</label>
+					</div>
+					<div class="col-xs-1 "></div>
+					<div class="col-xs-5 padding-right-0 text-center">
+						<label>Selected Fields</label>
+					</div>
+					<div class="col-xs-1 padding-left-0 "></div>
+				</div>
+				<div class="row">
+					<div class="col-xs-5 text-center">
+						<select name="from" id="multiselect" class="form-control" size="8" multiple="multiple">
+							<option ng-repeat="opt in avlFields" value="{{opt.key}}">{{opt.value}}</option>
+						</select>
+					</div>
+					<div class="col-xs-1 ">
+						<button type="button" id="multiselect_rightAll" ng-click="moveAllToRight()" class="btn btn-block">
+							<i class="glyphicon glyphicon-forward"></i>
+						</button>
+						<button type="button" id="multiselect_rightSelected" ng-click="moveToRight()" class="btn btn-block">
+							<i class="glyphicon glyphicon-chevron-right"></i>
+						</button>
+						<button type="button" id="multiselect_leftSelected" ng-click="moveToLeft()" class="btn btn-block">
+							<i class="glyphicon glyphicon-chevron-left"></i>
+						</button>
+						<button type="button" id="multiselect_leftAll" ng-click="moveAllToLeft()" class="btn btn-block">
+							<i class="glyphicon glyphicon-backward"></i>
+						</button>
+					</div>
+					<div class="col-xs-5 padding-right-0 text-center">
+						<select name="to" id="multiselect_to" class="form-control" size="8" multiple="multiple" ng-model="selectedFields"></select>
+					</div>
+					<div class="col-xs-1 padding-left-0 ">
+						<button type="button" id="multiselect_to_top" ng-click="moveTop()" class="btn btn-default">
+							<span class="glyphicon glyphicon-step-backward rotate-by-90"></span>
+						</button>
+						<button type="button" id="multiselect_to_up" ng-click="moveUp()" class="btn btn-default">
+							<span class="glyphicon glyphicon-triangle-top"></span>
+						</button>
+						<button type="button" id="multiselect_to_down" ng-click="moveDown()" class="btn btn-default">
+							<span class="glyphicon glyphicon-triangle-bottom"></span>
+						</button>
+						<button type="button" id="multiselect_to_last" ng-click="moveBottom()" class="btn btn-default">
+							<span class="glyphicon glyphicon-step-forward rotate-by-90"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="panel panel-info" data-ng-show="step == 4">
+			<div class="panel-heading">
+				<font class="pan-head-font">Step 4. Restrict Visibility</font>
+			</div>
+			<div class="panel-body">
+				<div class="col-md-6">
+					<div class="radio">
+						<label> <input type="radio" name="visibility" ng-model="visibility" value="self" />Visible only to<b> me </b></label>
+					</div>
+					<div class="radio">
+						<label> <input type="radio" name="visibility" ng-model="visibility" value="all" />Visible to<b> all users</b> (includes partner and customer portal users)</label>
+					</div>
+					<div class="radio">
+						<label> <input type="radio" name="visibility" ng-model="visibility" value="group" />Visible to certain <b>groups of users</b></label>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row">
+			<div class="col-md-4 col-md-offset-6 action-btn-margin">
+			<!-- <button class="btn btn-default" ng-click="doSave()">Save</button>
+			<button class="btn btn-default"  ng-click="doSaveAs()">Save As</button>
+			<button class="btn btn-default" ng-click="doDelete()">Delete</button>
+			<button class="btn btn-default" ng-click="doCancel()">Cancel</button> -->
+
+			
+			</div>
+		</div>
+		
+	</form>
+</div>
+</div>
+		<div class="modal-footer">
+				<button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
+				<button class="btn btn-primary" type="button" ng-click="save()">Save</button>
+				<button class="btn btn-primary {{isFirstPanel}}" ng-click="previous()" >Previous</button>
+			<button class="btn btn-primary {{isLastPanel}}" ng-click="next()" >Next</button>
+		</div>
+		</div>
+		
+<style>
+.modal-header {
+     padding:9px 15px;
+     border-bottom:1px solid #eee;
+     background-color: #204d74;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+     color:whitesmoke;
+ }
+</style>

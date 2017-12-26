@@ -1,0 +1,99 @@
+<div class="row" ng-controller="Tab4_cntrl">
+	<div class="col-sm-12">
+		<section class="widget">
+			<div class="widget-body">
+				<form class="form-horizontal ng-pristine ng-valid" role="form">
+					<fieldset>
+						<legend>
+							<strong>Responsible Party</strong>
+						</legend>
+
+						<div class="form-group">
+							<label for="normal-field" class="col-sm-3 control-label">Engineers
+								Name</label>
+							<div class="col-sm-9">
+								<input id="industry" type="text" placeholder=""
+									class="form-control radius-top-bot" ng-model="bInfo.partyName">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="normal-field" class="col-sm-3 control-label">Engineers
+								Phone</label>
+							<div class="col-sm-3">
+								<input id="industry" type="text" placeholder=""
+									class="form-control radius-top-bot" ng-model="bInfo.partyName">
+							</div>
+							<label for="normal-field" class="col-sm-2 control-label">Ext</label>
+							<div class="col-sm-3">
+								<input id="industry" type="text" placeholder=""
+									class="form-control radius-top-bot" ng-model="bInfo.partyName">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="hint-field" class="col-sm-3 control-label">Billing
+								Recommended</label>
+							<div class="col-sm-3">
+								<select id="mInvovled" class="form-control radius-top-bot"
+									ng-model="bInfo.mInvovled">
+									<option value="">-- Choose--</option>
+									<option value="1">Yes</option>
+									<option value="0">No</option>
+								</select>
+							</div>
+							<label for="hint-field" class="col-sm-2 control-label">No
+								Bill Reason</label>
+							<div class="col-sm-4">
+								<select id="mInvovled" class="form-control radius-top-bot"
+									ng-model="bInfo.mInvovled">
+									<option value="">-- Choose--</option>
+									<option value="1">Yes</option>
+									<option value="0">No</option>
+								</select>
+							</div>
+
+						</div>
+						<div class="form-group">
+							<label for="normal-field" class="col-sm-3 control-label">Person
+								Responsible for Damage</label>
+							<div class="col-sm-9">
+								<input id="industry" type="text" placeholder=""
+									class="form-control radius-top-bot" ng-model="bInfo.partyName">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="hint-field" class="col-sm-3 control-label">Does
+								Person Admit Responsibility</label>
+							<div class="col-sm-9">
+								<select id="mInvovled" class="form-control radius-top-bot"
+									ng-model="bInfo.mInvovled">
+									<option value="">-- Choose--</option>
+									<option value="1">Yes</option>
+									<option value="0">No</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="hint-field" class="col-sm-3 control-label">How
+								Responsibility was Determined</label>
+							<div class="col-sm-9">
+								<textarea rows="4" class="form-control" id="default-textarea"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="hint-field" class="col-sm-3 control-label">Was
+								General Contractor Involved</label>
+							<div class="col-sm-9">
+								<select id="mInvovled" class="form-control radius-top-bot"
+									ng-model="bInfo.mInvovled">
+									<option value="">-- Choose--</option>
+									<option value="1">Yes</option>
+									<option value="0">No</option>
+								</select>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</section>
+	</div>
+</div>

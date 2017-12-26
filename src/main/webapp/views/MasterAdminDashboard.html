@@ -1,0 +1,23 @@
+<div class="row">
+	<div class="col-sm-12">
+		<div class="col-sm-6" data-ng-controller="GenericChartCtrl">
+			<div google-chart chart="myChartObject" style="height:200px; width:100%;" on-select="seriesSelected(selectedItem)"></div>
+		</div>
+
+		<div class="col-sm-6" data-ng-controller="HideSeriesController">
+			<div google-chart chart="myChartObject" agc-on-select="hideSeries(selectedItem)" style="height:200px; width:100%;"></div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-12">
+		<div class="col-sm-6" data-ng-controller="PieChartCtrl">
+		<!-- <div data-google-chart chart="chart" style="height:200px; width:100%;"> -->
+			<div google-chart chart="myChartObject" style="height:200px; width:100%;" on-select="seriesSelected(selectedItem)"></div>
+		</div>
+
+		<div class="col-sm-6" data-ng-controller="GaugeChartCtrl">
+			<div google-chart chart="myChartObject" style="{{cssStyle}}"></div>
+		</div>
+	</div>
+</div>

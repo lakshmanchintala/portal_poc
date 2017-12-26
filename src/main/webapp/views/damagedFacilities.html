@@ -1,0 +1,299 @@
+<div class="row" ng-controller="Tab3_cntrl">
+	<div class="col-sm-12">
+		<section class="widget">
+			<div class="widget-body">
+				<form class="form-horizontal ng-pristine ng-valid" role="form">
+					<fieldset>
+						<legend>
+							<strong>Damaged Facilities</strong>
+						</legend>
+
+						<div class="form-group">
+							<label for="normal-field" class="col-sm-3 control-label">Damage
+								FCC Reportable</label>
+							<div class="col-sm-3">
+								<select id="mInvovled" class="form-control radius-top-bot"
+									ng-model="bInfo.mInvovled">
+									<option value="">-- Choose--</option>
+									<option value="1">Yes</option>
+									<option value="0">No</option>
+								</select>
+							</div>
+							<label for="normal-field" class="col-sm-2 control-label">ECC
+								Notified</label>
+							<div class="col-sm-3">
+								<select id="photos" class="form-control radius-top-bot"
+									ng-model="bInfo.photos">
+									<option value="">-- Choose--</option>
+									<option value="1">Yes</option>
+									<option value="0">No</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="normal-field" class="col-sm-3 control-label">Type
+								of Damage</label>
+							<div class="col-sm-3">
+								<select id="mInvovled" class="form-control radius-top-bot"
+									ng-model="bInfo.mInvovled">
+									<option value="">-- Choose--</option>
+									<option value="1">Yes</option>
+									<option value="0">No</option>
+								</select>
+							</div>
+							<label for="normal-field" class="col-sm-2 control-label">DWO/UT</label>
+							<div class="col-sm-3">
+								<input id="industry" type="text" placeholder=""
+									class="form-control radius-top-bot" ng-model="bInfo.partyName">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="hint-field" class="col-sm-3 control-label">CTTN</label>
+							<div class="col-sm-2">
+								<input id="industry" type="text" placeholder=""
+									class="form-control radius-top-bot" ng-model="bInfo.partyName">
+							</div>
+							<div class="col-sm-2">
+								<input id="industry" type="text" placeholder=""
+									class="form-control radius-top-bot" ng-model="bInfo.partyName">
+							</div>
+							<div class="col-sm-2">
+								<input id="industry" type="text" placeholder=""
+									class="form-control radius-top-bot" ng-model="bInfo.partyName">
+							</div>
+							<div class="col-sm-2">
+								<input id="industry" type="text" placeholder=""
+									class="form-control radius-top-bot" ng-model="bInfo.partyName">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="prepended-input">Telephone</label>
+							<div class="col-sm-2">
+								<input type="text" id="normal-field" class="form-control"
+									ng-model="bInfo.partyTelephone">
+							</div>
+							<label class="col-sm-1 control-label" for="prepended-input">Ext</label>
+							<div class="col-sm-3">
+								<input type="text" id="normal-field" class="form-control"
+									ng-model="bInfo.partyExt">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="normal-field" class="col-sm-3 control-label">Cable
+								Type</label>
+							<div class="col-sm-3">
+								<select id="mInvovled" class="form-control radius-top-bot"
+									ng-model="bInfo.mInvovled">
+									<option value="">-- Choose--</option>
+									<option value="1">Yes</option>
+									<option value="0">No</option>
+								</select>
+							</div>
+							<label for="normal-field" class="col-sm-2 control-label">Code</label>
+							<div class="col-sm-3">
+								<input id="industry" type="text" placeholder=""
+									class="form-control radius-top-bot" ng-model="bInfo.partyName">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="normal-field" class="col-sm-3 control-label">Fibers</label>
+							<div class="col-sm-3">
+								<input id="industry" type="text" placeholder=""
+									class="form-control radius-top-bot" ng-model="bInfo.partyName">
+							</div>
+							<label for="normal-field" class="col-sm-2 control-label">Gauge</label>
+							<div class="col-sm-3">
+								<select id="mInvovled" class="form-control radius-top-bot"
+									ng-model="bInfo.mInvovled">
+									<option value="">-- Choose--</option>
+									<option value="1">Yes</option>
+									<option value="0">No</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="prepended-input">Cable
+								Number / ID 1</label>
+							<div class="col-sm-3">
+								<input type="text" id="normal-field" class="form-control"
+									ng-model="bInfo.partyCity">
+							</div>
+							<label class="col-sm-2 control-label" for="prepended-input">Count
+								1</label>
+							<div class="col-sm-3">
+								<input id="industry" type="text" placeholder=""
+									class="form-control" ng-model="bInfo.partyState">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="prepended-input">Cable
+								Number / ID 2</label>
+							<div class="col-sm-3">
+								<input type="text" id="normal-field" class="form-control"
+									ng-model="bInfo.partyCity">
+							</div>
+							<label class="col-sm-2 control-label" for="prepended-input">Count
+								2</label>
+							<div class="col-sm-3">
+								<input id="industry" type="text" placeholder=""
+									class="form-control" ng-model="bInfo.partyState">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="prepended-input">Cable
+								Number / ID 3</label>
+							<div class="col-sm-3">
+								<input type="text" id="normal-field" class="form-control"
+									ng-model="bInfo.partyCity">
+							</div>
+							<label class="col-sm-2 control-label" for="prepended-input">Count
+								3</label>
+							<div class="col-sm-3">
+								<input id="industry" type="text" placeholder=""
+									class="form-control" ng-model="bInfo.partyState">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="prepended-input">Number
+								of Fibers Damaged</label>
+							<div class="col-sm-3">
+								<input type="text" id="normal-field" class="form-control"
+									ng-model="bInfo.partyCity">
+							</div>
+							<label class="col-sm-2 control-label" for="prepended-input">Number
+								of DS-1s</label>
+							<div class="col-sm-3">
+								<input id="industry" type="text" placeholder=""
+									class="form-control" ng-model="bInfo.partyState">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="prepended-input">Number
+								of DS-3s</label>
+							<div class="col-sm-3">
+								<input type="text" id="normal-field" class="form-control"
+									ng-model="bInfo.partyCity">
+							</div>
+							<label class="col-sm-2 control-label" for="prepended-input">Number
+								of DS-Ls</label>
+							<div class="col-sm-3">
+								<input id="industry" type="text" placeholder=""
+									class="form-control" ng-model="bInfo.partyState">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="normal-field" class="col-sm-3 control-label">Equipment
+								Causing Damage</label>
+							<div class="col-sm-3">
+								<select id="mInvovled" class="form-control radius-top-bot"
+									ng-model="bInfo.mInvovled">
+									<option value="">-- Choose--</option>
+									<option value="1">Yes</option>
+									<option value="0">No</option>
+								</select>
+							</div>
+							<div class="col-sm-3">
+								<input id="industry" type="text" placeholder=""
+									class="form-control radius-top-bot" ng-model="bInfo.partyName">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="prepended-input">Height
+								of Facility Prior to Damage</label>
+							<div class="col-sm-2">
+								<div class="input-group">
+									<input type="text" id="normal-field" class="form-control  "
+										ng-model="bInfo.partyCity"><span
+										class="input-group-addon radius-right-top-bot"
+										ng-model="dmg.DDT">ft</span>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="input-group">
+									<input type="text" id="normal-field" class="form-control  "
+										ng-model="bInfo.partyCity"><span
+										class="input-group-addon radius-right-top-bot"
+										ng-model="dmg.DDT">in</span>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="prepended-input">Height
+								of Equipment Causing Damage</label>
+							<div class="col-sm-2">
+								<div class="input-group">
+									<input type="text" id="normal-field" class="form-control  "
+										ng-model="bInfo.partyCity"><span
+										class="input-group-addon radius-right-top-bot"
+										ng-model="dmg.DDT">ft</span>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="input-group">
+									<input type="text" id="normal-field" class="form-control  "
+										ng-model="bInfo.partyCity"><span
+										class="input-group-addon radius-right-top-bot"
+										ng-model="dmg.DDT">in</span>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="normal-field" class="col-sm-3 control-label">Dump
+								Truck Bed Up</label>
+							<div class="col-sm-3">
+								<select id="mInvovled" class="form-control radius-top-bot"
+									ng-model="bInfo.mInvovled">
+									<option value="">-- Choose--</option>
+									<option value="1">Yes</option>
+									<option value="0">No</option>
+								</select>
+							</div>
+							<label for="normal-field" class="col-sm-3 control-label">Garbage
+								Truck Forks Up</label>
+							<div class="col-sm-3">
+								<select id="mInvovled" class="form-control radius-top-bot"
+									ng-model="bInfo.mInvovled">
+									<option value="">-- Choose--</option>
+									<option value="1">Yes</option>
+									<option value="0">No</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="normal-field" class="col-sm-3 control-label">Cable
+								Location</label>
+							<div class="col-sm-3">
+								<select id="mInvovled" class="form-control radius-top-bot"
+									ng-model="bInfo.mInvovled">
+									<option value="">-- Choose--</option>
+									<option value="1">Yes</option>
+									<option value="0">No</option>
+								</select>
+							</div>
+							<label for="normal-field" class="col-sm-3 control-label">Property
+								Adjacent</label>
+							<div class="col-sm-3">
+								<select id="mInvovled" class="form-control radius-top-bot"
+									ng-model="bInfo.mInvovled">
+									<option value="">-- Choose--</option>
+									<option value="1">Yes</option>
+									<option value="0">No</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-actions">
+							<div class="row">
+								<div class="col-sm-offset-3 col-sm-7">
+									<button type="button" class="btn btn-primary">Add
+										Another Damaged Facility</button>
+									<button type="button" class="btn btn-inverse">Remove
+										this Damaged Facility</button>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</section>
+	</div>
+</div>
