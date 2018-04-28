@@ -1,0 +1,28 @@
+<div class="panel panel-default margin-top-10 small-panel">
+	<div class="panel-heading small-panel-title">
+	    <h3 class="panel-title"></h3>
+	</div>
+	<div class="panel-body">
+		<div class="row margin-bottom-10">
+		       <div class="col-sm-12">
+		       		<div class="underlineHeading"><div class="glyphicon glyphicon-user"></div><div>{{'KEY_NAME' | translate}}</div></div>
+		       		<div>{{account.name}}</div>
+		       </div> 
+		</div>
+	    <div class="row margin-bottom-10 margin-top-20">
+	    		<div class="col-sm-12">
+		       		<div class="underlineHeading"><div class="glyphicon glyphicon-envelope"></div><div>{{'KEY_USRNM' | translate}}/EMAIL</div></div>
+		       		<div>{{account.email}}</div>
+		       </div>				
+	    </div>
+	   	<div class="row margin-bottom-10 margin-top-20">
+			<div class="col-sm-5 col-xs-5"></div>
+			<div class="col-sm-2 col-xs-2">
+	    				<a class="btn btn-red-rounded btn-default btn-circle-border rui-icon-edit smallPanelbtn" ng-show="account==emailAccounts[0]" href="account/personalInformation"></a>
+						<a class="btn btn-red-rounded btn-default btn-circle-border rui-icon-delete-cleanup smallPanelbtn" ng-click="deleteEmail($index)"  ng-show="account!=emailAccounts[0]" href="#"></a>
+			</div>
+			<div class="col-sm-5 col-xs-5"></div>
+		</div>
+	</div>
+</div>
+            

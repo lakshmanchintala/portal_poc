@@ -1,0 +1,141 @@
+<div class="container">
+    <div class="row margin-bottom-20">
+        <div class="col-sm-12">
+            <div class="headline"><h2>{{'KEY_ACCOUNT_INFO' | translate}}</h2></div>
+        </div>
+    </div>
+    <div class="row">
+            <div class="col-sm-12">
+            <div class="row">
+            	<div class="col-sm-3"></div>
+                <div class="col-sm-8">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <i class="fa"></i>{{'KEY_SEC_ACCOUNT_HEADING' | translate}}
+                            </h3>
+                        </div>
+                        <div class="panel-body" class="panelBody">
+                        	<div class="row margin-bottom-5">
+                            	<div class="col-sm-12">
+                                	<div class="input-group margin-bottom-10">
+										<h5  class="colorRed">{{'KEY_ALL_REQ_FILEDS' | translate}}</h5>
+	                                </div> 
+                                </div>
+                            </div>
+                        	<div class="row margin-bottom-5">
+                                <div class="col-sm-12">
+                                	<div class="input-group margin-bottom-10">
+										<h2>{{'KEY_ACCOUNT_INFO' | translate}}</h2>
+	                                </div> 
+                                </div>
+                            </div>
+                            <div class="row margin-bottom-5">
+                            	 <div class="col-sm-12">
+                                	<div class="margin-bottom-10">
+                                		 <label for="userName">{{'KEY_USRNM' | translate}}</label>
+	                                     <input id="userName" type="text" placeholder="" class="form-control radius-top-bot">
+	                                  	 <h6>{{'KEY_SEC_ACCOUNT_UN_REST' | translate}}</h6>
+	                                </div> 
+                                </div>
+                             </div>
+                             <div class="row margin-bottom-5">
+                                <div class="col-sm-12">
+                                	<div class="margin-bottom-10">
+                                		 <label for="password">{{'KEY_PWD' | translate}}</label>
+	                                     <input id="password" type="password" placeholder="" class="form-control radius-top-bot">
+	                                     <h6>{{'KEY_SEC_ACCOUNT_PW_REST' | translate}}</h6>
+	                                </div> 
+                                </div>
+                             </div>
+                             <div class="row margin-bottom-5">
+                                <div class="col-sm-12">
+                                	<div class="margin-bottom-10">
+                                		 <label for="retypePassword">{{'KEY_RETYPE' | translate}} {{'KEY_PWD' | translate}}</label>
+	                                     <input id="retypePassword" type="password" placeholder="" class="form-control radius-top-bot">
+	                                </div> 
+                                </div>
+                             </div>
+                             <div class="row margin-bottom-5">
+                                <div class="col-sm-12">
+                                	<div class="input-group margin-bottom-10">
+										<h2>{{'KEY_PERSONAL_INFO' | translate}}</h2>
+	                                </div> 
+                                </div>
+                            </div>
+                             <div class="row margin-bottom-5">
+                            	<div class="col-sm-6">
+                                	<div class="margin-bottom-10">
+                                		 <label for="firstName">{{'KEY_SEC_ACCOUNT_FN' | translate}}</label>
+	                                     <input id="firstName" type="text" placeholder="" class="form-control radius-top-bot">
+	                                </div> 
+                                </div>
+                                <div class="col-sm-6">
+                                	<div class="margin-bottom-10">
+                                		 <label for="lastName">{{'KEY_SEC_ACCOUNT_LN' | translate}}</label>
+	                                     <input id="lastName" type="text" placeholder="" class="form-control radius-top-bot">
+	                                </div> 
+                                </div>
+                             </div>
+                            <div class="row margin-bottom-5">
+                                <div class="col-sm-12">
+                                	<div class="input-group margin-bottom-10">
+                                		 <label for="postalCode">{{'KEY_SEC_ACCOUNT_POST_CODE' | translate}}</label>
+										 <input id="postalCode" type="text" placeholder="" class="form-control radius-top-bot">
+	                                </div> 
+                                </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-12">
+                                	<label>{{'KEY_SEC_ACCOUNT_DOB' | translate}}</label>
+                             </div>
+                             </div>                             
+                             <div class="row margin-bottom-5">
+                               <div class="col-sm-4">
+                                	<div class="margin-bottom-10">
+										 <select class="form-control radius-top-bot" ng-model="month">
+	                                     	<option value="">{{'KEY_SELECT' | translate}}</option>
+	                                     	<option ng-repeat="month in months" value="{{month.name}}" >{{month.name}}                                  	
+	                                     	</option>	
+	                                     </select>
+	                                 </div>
+	                             </div>   
+	                             <div class="col-sm-4">
+                                	<div class="margin-bottom-10">
+										 <select class="form-control radius-top-bot" ng-model="date">
+	                                     	<option value="">{{'KEY_SELECT' | translate}}</option>	
+	                                     	<option ng-repeat="date in dates" value="{{date.date}}">{{date.date}}</option>
+	                                     </select>
+	                                 </div>
+	                             </div>
+	                             <div class="col-sm-4">
+                                	<div class="margin-bottom-10">
+										 <select class="form-control radius-top-bot" ng-model="year">
+	                                     	<option value="">{{'KEY_SELECT' | translate}}</option>
+	                                     	<option ng-repeat="year in years" value="{{year.name}}">{{year.name}}</option>	
+	                                     </select>
+	                                 </div>
+	                             </div>     
+	                         </div>
+                             <div class="row margin-bottom-20">
+								 		<div class="col-md-4 col-xs-3"></div>
+	                               		<div class="col-md-2 col-xs-3">
+	                                   		<div class="pull-right input-group margin-bottom-20">
+	                                       		<a class="btn btn-default btn-red-rounded" href="#"><i class="fa fa-add"></i>{{'KEY_SAVE' | translate}}</a>
+	                                   		</div>
+	                                   	</div>
+	                                   	<div class="col-md-2 col-xs-3">
+	                                   		<div class="input-group margin-bottom-20">
+	                                       		<a class="btn btn-default btn-red-rounded btn-red-withoutBorder" href="#"><i class="fa fa-add"></i>{{'KEY_CANCEL' | translate}}</a>
+	                                   		</div>
+	                                   	</div>
+										<div class="col-md-4 col-xs-3"></div>
+							 </div>
+                         </div>
+                       </div>
+                    </div>
+              </div>
+              </div>
+      </div>
+</div>

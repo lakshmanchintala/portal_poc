@@ -1,0 +1,108 @@
+<div class="container">
+    <div class="row margin-bottom-20">
+        <div class="col-sm-12">
+            <div class="headline"><h2>Account Information</h2></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <div account-navigation></div>
+        </div>
+            <div class="col-sm-9">
+                     <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <i class="fa"></i>{{'KEY_AUTH_APPS' | translate}}
+                            </h3>
+                        </div>
+                        <div class="panel-body margin-right-40 margin-left-40">
+                        <h4>Generate passwords to connect to your apps on your computer or mobile devices</h4>
+                        <h6>First, name your password. Then simply hit generate to obtain your password that connects to your app.</h6>
+                        <br>
+                            <div class="row margin-bottom-10">
+                               	<div ng-repeat="authApp in authorizedAppTextFieldArr" class="row divStyle" >
+											<div ng-if="authApp.generated " class= "height-45" >
+												<input type="button" ng-click="deleteAppPassword()" class="floatRight margin-20" value="Delete"> 
+												<div class="col-sm-1 col-xs-3 authAppGen">
+													<div class="rui-icon-lock-v2 lockIcon">
+													</div>
+												</div>
+												<div class="col-sm-7 col-xs-7 margin-top-10" >{{authApp.appName}}</div>
+												<div class="col-sm-4 col-xs-2 pull-right btn btn-red-rounded btn-default btn-circle-border rui-icon-delete-cleanup margin-right-5 margin-top-8" ng-click="deleteAppPassword1(authApp.appName)"></div>
+												
+
+											</div>
+											<div ng-if="!authApp.generated">
+												<div class="col-sm-1 col-xs-3 authAppGen" >
+													<div id="locked" class="lock-icon rui-icon-lock-v2">
+													</div>
+												</div>
+												<div class="col-sm-6 col-xs-5">
+													<input  class="form-control radius-top-bot margin-top-5" id="password" name="{{authApp.appName}}" type="text" placeholder="Name your password" >
+												</div>
+													
+												<div id="generate" class="btn-red-rounded btn btn-disabled pull-right" ng-click="generatePassword()">Generate</div>
+											</div>
+									  </div>
+
+                                <div class="col-sm-12 border-2" >
+                                    <a class="pull-right label-red" ng-click="addAuthorizedAppTextfield()">Add another</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+</div>
+<!--- delete password Popup --- Start--->
+	<div>
+		<script type="text/ng-template" id="deletePopup.html">
+		<div class="modal-header">
+				<h3 class="modal-title">Delete Password</h3>
+		</div>
+
+		<form class="form-horizontal">
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<label>Are you sure?</label>	
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-u" ng-click="ok()">Yes</button>
+					<button class="btn btn-u btn-u-default" ng-click="cancel()">No</button>
+				</div>
+			</div>
+		</form>
+	</script>
+	</div>
+	<!--- delete password Popup --- End--->
+	<!--- generate password Popup --- Start--->
+	<div>
+		<script type="text/ng-template" id="generatePassword.html">
+		<div class="modal-header">
+				<h3 class="modal-title font-bold text-center">Generated App Password</h3>
+		</div>
+
+		<form class="form-horizontal">
+			<div class="modal-body">
+					<h3 id="foo" class="col-sm-12 generate-password font-bold">d@rc5e3_anxxbbjk</h3>
+					<div class="col-sm-12 text-center">
+						<a class="label-red" ngclipboard data-clipboard-target="#foo">Copy Password</a>
+					</div>
+					<div class="col-sm-12 padding-left-20per" >
+						<p>1. Vestibulum id ligula porta felis euismod semper.</p>
+						<p>2. Sed posuere consectetur est at lobortis.</p>
+						<p>3. Donec sed odio dui.</p>
+						<p>4. Donec ullamcorper nulla non metus auctor fringilla.</p>
+					</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn-red-rounded btn btn-default" ng-click="ok()">Done</button>
+			</div>
+			</div>
+		</form>
+	</script>
+	</div>
+	<!--- generate password Popup --- End--->

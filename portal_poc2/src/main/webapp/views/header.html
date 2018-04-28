@@ -1,0 +1,56 @@
+<div class="header">
+
+    <header xmlns:java-urldecode="java.net.URLDecoder" class="navbar navbar-fixed-top status-pre " role="banner" id="header">
+
+        <div class="container">
+            <div class="navbar-header">
+                <button ng-show="loggedIn" title="Menu" class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-menu">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a title="Rogers" class="navbar-brand" href="account/manageEmailAccounts">Rogers</a>
+                <!-- <span class="tpiaHeading">{{'KEY_TITLE_MCP' | translate}}</span> -->
+            </div>
+            <div class="shadow"></div>
+            <nav id="main-menu" class="collapse navbar-collapse bs-navbar-collapse">
+                <ul id="nav-main" class="nav navbar-nav" ng-show="loggedIn" data-toggle="collapse" data-target="#main-menu">
+                    
+                    <li class="dropdown">
+                        <a href="account/manageEmailAccounts">{{'KEY_MANAGEEMAIL' | translate}}</a>
+
+                    </li>
+                    <li>
+                        <a href="account/accountInformationHomePage">
+                            {{'KEY_ACCOUNT_INFO' | translate}}
+                        </a>
+                    </li>
+                </ul>
+                <ul id="nav-context-bar" class="nav navbar-nav" ng-if="loggedIn === true" data-toggle="collapse" data-target="#main-menu"> <!-- ng-show="loggedIn" -->
+                    <li class="topbar-devider"></li>
+                    <!-- <li><a href="account/manageEmailAccounts"><i class="fa fa-home"></i> Home</a></li> -->
+                    <li><a>Hi Wendy</a></li>
+                    <li class="topbar-devider"></li>
+                    <!-- <li><a href="account/accountInformation"> <i class="fa fa-user"></i> My Account</a></li> -->
+                    <li class="topbar-devider"></li>
+                    <!-- <li><a href="#"><i class="fa fa-book"></i> Help</a></li> -->
+                    <li class="topbar-devider"></li>
+                    <li><a href="admin/logout" class="colorRed"><!-- <i class="fa fa-unlock"></i> --> {{'KEY_SIGNOUT' | translate}}</a></li>
+                    <li class="topbar-devider"></li>
+					<li ng-show='fr'><!-- <i class="fa fa-language"></i> --><a ng-click="changeLanguage('fr')" translate="KEY_LANG_FR" class="colorRed"></a></li>
+                    <li ng-hide='fr'><!-- <i class="fa fa-language"></i> --><a ng-click="changeLanguage('en')" translate="KEY_LANG_EN" class="colorRed"></a></li>
+                    <li class="topbar-devider"></li>
+                    <li><a href="#" class="colorRed"> <i class="fa fa-envelope"></i> {{'KEY_MAIL' | translate}}</a></li>
+                </ul>
+                <ul id="nav-context-bar" class="nav navbar-nav" ng-if="loggedIn === false" data-toggle="collapse" data-target="#main-menu"> <!-- ng-show="loggedIn" -->
+                    <li ng-show='fr'><!-- <i class="fa fa-language"></i> --><a ng-click="changeLanguage('fr')" translate="KEY_LANG_FR" class="colorRed"></a></li>
+                    <li ng-hide='fr'><!-- <i class="fa fa-language"></i> --><a ng-click="changeLanguage('en')" translate="KEY_LANG_EN" class="colorRed"></a></li>
+                </ul>
+            </nav>
+            <!--<div id="nav-actions">
+                <div id="search"><a title="Search" atm="search:global:header" href="#" data-toggle="modal" data-target="#modal-typeahead"><i class="rui-icon-search"></i></a></div>
+            </div>-->
+        </div>
+    </header>
+</div>

@@ -1,0 +1,100 @@
+<div class="container content-sm">
+
+   <div ng-show="loggedIn === false">
+		   <div class="row margin-bottom-10 padding-left-20">
+				<h4>{{KEY_WELCOMEMSG | translate}}</h4>
+		   </div>
+           <div class="row margin-bottom-10">
+               <div class="col-sm-12">
+                   <div class="news-v1-in col-sm-7">
+                       <form action="#" class="sky-form label-rounded">
+                           <fieldset>
+                               <div class="reg-header">
+                                   <h2>{{'KEY_TITLE' | translate}}</h2>
+                               </div>
+                               <div class="row">
+                                   <div class="input-group margin-bottom-20">
+                                       <span class="input-group-addon radius-left-top-bot"><i class="fa fa-user"></i></span>
+                                       <input type="text" placeholder="{{'KEY_USRNM' | translate}}" class="form-control radius-right-top-bot">
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="input-group margin-bottom-20">
+                                       <span class="input-group-addon radius-left-top-bot"><i class="fa fa-lock"></i></span>
+                                       <input type="password" placeholder="{{'KEY_PWD' | translate}}" class="form-control radius-right-top-bot">
+                                   </div>
+                               </div>
+                               <div class="row">
+                               <div class="col-sm-12 padding-right-0">
+                                   <div class="col-xs-6 padding-left-5 padding-left-10neg">
+                                   		<input type="checkbox" class="displayInline">
+                                   	     &nbsp;{{'KEY_REMME' | translate}}
+                                   </div>
+                                   <div class="col-xs-6 input-group padding-right-20neg">
+                                       <a href="account/manageEmailAccounts" class="btn btn-default btn-red-rounded pull-right" ng-click="login()"><i class="fa fa-add"></i> {{'KEY_SIGNIN' | translate}}</a>
+                                   </div>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="input-group margin-bottom-20">
+                                   {{'KEY_FRGTUR' | translate}} <a href="javascript:void();" ng-click="passwordRecoveryMainPopup()"><b>{{'KEY_PWD' | translate}}</b></a>?
+                                   </div>
+                               </div>
+                           </fieldset>
+                       </form>
+                   </div>
+                   <div class="col-sm-4 registration-area-box margin-left-40">
+                       <form action="#" class="sky-form label-rounded">
+                           <fieldset>
+                               <div class="reg-header">
+                                   <h2>{{'KEY_NEWUSR' | translate}}</h2>
+                               </div>
+                               <div class="row">
+                                   <div class="input-group margin-bottom-20">
+                                       <span>{{'KEY_REGMSG1' | translate}}</span>
+                                       <ul>
+                                       <li>{{'KEY_REGMSG2' | translate}}</li>
+                                       <li>{{'KEY_REGMSG3' | translate}}</li>
+                                       </ul>
+                                   </div>
+                               </div>
+                               
+                               <div class="row">
+                                   <div class="input-group">
+                                       <a href="account/registration" class="btn btn-default btn-red-rounded" >{{'KEY_REGBTTON' | translate}}</a>
+                                   </div>
+                               </div>
+                           </fieldset>
+                       </form>
+                   </div>
+               </div>
+           </div>
+    </div>
+
+</div>
+
+<script>
+
+    $('#slider1').slider({
+          min: 1,
+          max: 60,
+          values: [20],
+          slide: function(event, ui)
+          {
+            $('#slider1-value').text(ui.value);
+          }
+	});
+
+	$('#slider2').slider({
+          min: 2,
+          max: 60,
+          values: [5],
+          slide: function(event, ui)
+          {
+            $('#slider2-value').text(ui.value);
+          }
+	});
+
+
+
+</script>

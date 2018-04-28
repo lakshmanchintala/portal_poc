@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<title>RMC Portal</title>
+
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<!-- Web Fonts -->
+	<link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
+
+	<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+
+	<link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/plugins/rui-icons.css">
+
+	<link rel="stylesheet" href="assets/css/custom.css">
+
+	<base href="/rmc-portal/">
+</head>
+
+<body ng-app="portal">
+
+<div class="wrapper" ng-controller="MainController" ng-class="(loggedIn === false) ? 'bg-grey' : ''">
+
+	<div header></div>
+	<div class="headerLine" ng-show="loggedIn === true"></div>
+	<div class="container content-sm margin-top-20" class="containerContent">
+		<div ng-view></div>
+	</div>
+
+	<div footer></div>
+
+</div><!--/wrapper-->
+
+
+<div>
+	<script type="text/ng-template" id="registerLookup.html">
+		<div class="modal-header">
+			<h3 class="modal-title">Looking for your Registration Key & Number?</h3>
+		</div>
+		<div class="modal-body">
+			<div class="colText">
+				<div class="row">
+					<div class="col-md-12">
+						<p><strong>Registration Key</strong></p>
+						<p>Your Registration Key is your Account Number with an 'S' in front of it.</p>
+						<p><strong>For Example</strong></p>
+						<p><strong>If your account number is:</strong></p>
+						<p><strong>251-123456789</strong></p>
+						<p><strong>Then your Registration Key is:</strong></p>
+						<p><strong>S251123456789</strong></p>
+						<p>(remove any spaces or dashes)</p>
+						<p><strong>Your account number can be found :</strong></p>
+						<ul>
+							<li>In your confirmation email that you received when you signed up for service</li>
+							<li>When you log into myrogers</li>
+							<li>On your paper invoice that you receive in the mail</li>
+						</ul>
+						<p><strong>Registration Number</strong></p>
+						<p>Your Registration Number is the last 4 digits of your home phone number repeated twice.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+				<button class="btn btn-default btn-red-rounded" type="button" ng-click="cancel()">Back</button>
+		</div>
+	</script>
+
+</div>
+<!-- Password recovery POPUP-start-->
+<div>
+	<script type="text/ng-template" id="passwordRecoveryMain.html">
+		<div class="modal-header">
+			<h3 class="modal-title">{{'KEY_FORGOTPASSWORDTITLE' | translate}}</h3>
+		</div>
+		<form class="form-horizontal" ng-submit="ok()">
+			<div class="modal-body">
+				<div class="colText">
+					<div class="row">
+						<span>&nbsp;&nbsp;&nbsp;&nbsp;{{'KEY_FORGOTPASSWORDDESC' | translate}}</span> <br><br>
+							<ul>
+								<li> {{'KEY_FORGOTPASSWORDEMAIL' | translate}} </li>
+								<li> {{'KEY_FORGOTPASSWORDPHONE' | translate}} </li>
+								<li> {{'KEY_FORGOTPASSWORDRECOVERYEMAIL' | translate}} </li>
+							</ul>
+					</div
+					<div class="row">
+						<div class="col-md-7">
+						        <input type="text" ng-model="passwordRecovery.userInput"  class="form-control margin-bottom-10" placeholder="{{'KEY_FORGOTPASSWORDPLACEHOLDER' | translate}}" >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default btn-red-rounded" type="button" ng-click="nextMain()">{{'KEY_NEXT_BTN' | translate}}</button>
+			</div>
+		</form>
+	</script>
+</div>
+
+<div>
+	<script type="text/ng-template" id="passwordRecoveryIncorrectInfo.html">
+		<div class="modal-header">
+			<h3 class="modal-title">Hmm, something went wrong</h3>
+		</div>
+		<form class="form-horizontal" ng-submit="ok()">
+			<div class="modal-body">
+				<div class="colText">
+					<div class="row">
+						<span>&nbsp;&nbsp;&nbsp;&nbsp;Try entering your information again</span> <br><br>
+							<ul>
+								<li> Rogers.com email address </li>
+								<li> Recovery phone number </li>
+								<li> Recovery email address </li>
+							</ul>
+					</div
+					<div class="row">
+						<div class="col-md-7">
+						        <input type="text" ng-model="passwordRecovery.retryInput" class="form-control margin-bottom-10" placeholder="Email Address or Phone Number" >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default btn-red-rounded" type="button" ng-click="nextIncorrectInfo()">Next</button>
+				<button class="btn btn-default btn-red-rounded btn-red-withoutBorder" type="button" ng-click="cancel()">Cancel</button>
+			</div>
+		</form>
+	</script>
+</div>
+
+<div>
+	<script type="text/ng-template" id="passwordRecoveryVerificationCodeMobile.html">
+		<div class="modal-header text-center">
+			<div class="rui-icon-wireless col-xs-12 loginKnownUserPhoneIcon"></div>
+			<h3 class="modal-title">Enter the verification code.</h3>
+		</div>
+		<form class="form-horizontal" ng-submit="ok()">
+			<div class="modal-body text-center">
+				<div class="colText">
+					<div class="row">
+						<span>&nbsp;&nbsp;&nbsp;&nbsp;We texted it to you.</span> <br><br>
+							
+					</div
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2">
+						        <input type="text" ng-model="passwordRecovery.verificationCode" class="form-control margin-bottom-10" placeholder="Enter the 6-digit code" >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default btn-red-rounded" type="button" ng-click="nextVerificationCode()">Next</button>
+				<button class="btn btn-default btn-red-rounded btn-red-withoutBorder" type="button" ng-click="cancel()">Cancel</button>
+			</div>
+		</form>
+	</script>
+</div>
+
+<div>
+	<script type="text/ng-template" id="passwordRecoveryVerificationCodeLaptop.html">
+		<div class="modal-header text-center">
+			<div class="rui-icon-internet col-xs-12 loginKnownUserPhoneIcon"></div>
+			<h3 class="modal-title">Enter the verification code.</h3>
+		</div>
+		<form class="form-horizontal" ng-submit="ok()">
+			<div class="modal-body text-center">
+				<div class="colText">
+					<div class="row">
+						<span>We emailed it to you.</span> <br><br>							
+					</div
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2">
+						        <input type="text" ng-model="passwordRecovery.verificationCode" class="form-control margin-bottom-10" placeholder="Enter the 6-digit code" >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default btn-red-rounded" type="button" ng-click="nextVerificationCode()">Next</button>
+				<button class="btn btn-default btn-red-rounded btn-red-withoutBorder" type="button" ng-click="cancel()">Cancel</button>
+			</div>
+		</form>
+	</script>
+</div>
+
+<div>
+	<script type="text/ng-template" id="generatedAppPassword.html">
+		<div class="modal-header">
+			<h3 class="modal-title">Generated App Password.</h3>
+		</div>
+		<form class="form-horizontal" ng-submit="ok()">
+			<div class="modal-body">
+				<div class="colText">
+					<div class="row">
+						<div class="col-md-7">
+						        <input type="text" ng-model="password" class="form-control margin-bottom-10">
+								<span class="colorRed">Copy Password</span>
+						</div>
+					</div><br>
+					<div class="row">
+							<ol>
+  								<li>Vestibulum id ligula porta felis euismod semper.</li>
+  								<li>Sed posuere consectetur est at lobortis.</li>
+  								<li>Donec sed odio dui.</li>
+  								<li>Donec ullamcorper nulla non metus auctor fringilla.</li>
+							</ol>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default btn-red-rounded" type="button" ng-click="closeGenAppPwdPopup()">Done</button>
+			</div>
+		</form>
+	</script>
+</div>
+
+<div>
+	<script type="text/ng-template" id="emailAlternateContact.html">
+		<div class="modal-header text-center">
+			<h3 class="modal-title">{{'KEY_MANAGEEMAILPOPUP_TITLE' | translate}}</h3>
+		</div>
+		<form class="form-horizontal" ng-submit="ok()">
+			<div class="modal-body text-center">
+				<div class="colText">
+					<div class="row">
+						<span class="col-sm-12">{{'KEY_MANAGEEMAILPOPUP_POPUPBODY' | translate}}
+						</span>
+					 <br><br>							
+					</div>
+					<div class="row margin-top-20">
+						<div class="col-md-8 col-md-offset-2">
+							<div class="row">	
+								<div class="col-sm-1">
+						        <a href id="simple-dropdown" ng-model="countryCode" uib-dropdown-toggle class="testClass colorRed">
+											        {{countryCode}}
+								</a>
+								</div>
+								<div class="col-sm-11">
+								 <input type="text" ng-model="alternatePhone" class="form-control margin-bottom-10" placeholder="{{'KEY_ALTPHONE' | translate}}" >
+								</div>
+							</div>	
+							<div class="row">
+								<div class="col-sm-11 col-sm-offset-1">
+								<input type="text" ng-model="alternateEmail" class="form-control margin-bottom-10" placeholder="{{'KEY_ALTEMAIL' | translate}}" >
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default btn-red-rounded" type="button" ng-click="closePopup()">{{'KEY_NEXT_BTN' | translate}}</button>
+				<button class="btn btn-default btn-red-rounded btn-red-withoutBorder" type="button" ng-click="closePopup()">{{'KEY_SKIP_BTN' | translate}}</button>
+			</div>
+		</form>
+	</script>
+</div>
+
+<!--POPUP-start-->
+<!-- JS Global Compulsory -->
+<script type="text/javascript" src="assets/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="assets/plugins/jquery/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
+<script type="text/javascript" src="assets/plugins/smoothScroll.js"></script>
+<script type="text/javascript" src="assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>
+
+<script type="text/javascript" src="assets/plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js"></script>
+
+<!-- JS Customization -->
+<script type="text/javascript" src="assets/js/custom.js"></script>
+<!-- JS Page Level -->
+<script type="text/javascript" src="assets/js/app.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		//App.init();
+	});
+</script>
+<!--[if lt IE 9]>
+	<script src="assets/plugins/respond.js"></script>
+	<script src="assets/plugins/html5shiv.js"></script>
+	<script src="assets/plugins/placeholder-IE-fixes.js"></script>
+<![endif]-->
+
+<!-- Angular JS -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+<script type="text/javascript" src="assets/plugins/bootstrap/js/ui-bootstrap-tpls-1.1.0.min.js"></script>
+<script src="https://cdn.rawgit.com/zenorocha/clipboard.js/master/dist/clipboard.min.js"></script>
+
+<!-- Angular JS Translate -->
+    <script src="https://cdn.rawgit.com/SlexAxton/messageformat.js/v0.3.1/messageformat.js"></script>
+   <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-animate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-cookies.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-sanitize.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.10.0/angular-translate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate-interpolation-messageformat/2.10.0/angular-translate-interpolation-messageformat.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate-storage-cookie/2.10.0/angular-translate-storage-cookie.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate-storage-local/2.10.0/angular-translate-storage-local.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate-loader-url/2.10.0/angular-translate-loader-url.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate-loader-static-files/2.10.0/angular-translate-loader-static-files.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate-handler-log/2.10.0/angular-translate-handler-log.js"></script>
+    
+<script src="scripts/controllers/app.js"></script>
+<script src="scripts/controllers/portal.js"></script>
+<script src="scripts/controllers/route.js"></script>
+<script src="scripts/controllers/registration.js"></script>
+<script src="scripts/controllers/password-recovery.js"></script> 
+
+<script src="scripts/directives/header.js"></script>
+<script src="scripts/directives/footer.js"></script>
+<script src="scripts/i18n/english.js"></script>
+<script src="scripts/i18n/french.js"></script>
+<script src="scripts/directives/act-navigation.js"></script>
+<script src="scripts/directives/file-upload.js"></script>
+<script src="scripts/directives/popup-modal.js"></script>
+<script src="scripts/directives/commonComponents.js"></script>
+<script src="assets/plugins/ngclipboard.js"></script>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+</body>
+</html>

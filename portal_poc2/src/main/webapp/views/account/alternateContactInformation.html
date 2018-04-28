@@ -1,0 +1,79 @@
+<div class="container">
+    <div class="row margin-bottom-20">
+        <div class="col-sm-12">
+            <div class="headline">
+                <h2>Account Information</h2></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <div account-navigation></div>
+        </div>
+        <div class="col-sm-9">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                                <i class="fa"></i>{{'KEY_ALT_CONTACT_INFO' | translate}}
+                    </h3>
+                </div>
+                <div class="panel-body panelBody">
+                    <div class="row margin-bottom-10">
+                        <label class="col-sm-12">Phone Numbers <span class="colorRed"></span></label>
+                        <div class="col-sm-12 divContent" data-ng-repeat="phoneField in phoneNumberTextFieldArr">
+                            <div class="row">
+                                <div class="col-sm-12 height-45 margin-left-10 margin-right-10" ng-if="phoneField.saved">
+                                    <div class="col-sm-4 col-xs-6 margin-top-10 ">{{phoneField.phoneNumber}}</div>
+                                    <div data-ng-if="phoneField.verified" class="col-sm-4 col-xs-4 margin-top-10 colorGreen">Verified</div>
+                                    <div data-ng-if="!phoneField.verified" class="col-sm-4 col-xs-4 margin-top-10 colorOrange">Unverified</div>
+                                    <div class="col-sm-4 col-xs-2 pull-right btn btn-red-rounded btn-default btn-circle-border rui-icon-delete-cleanup margin-top-10 " ng-click="deletePhoneNumber(phoneField.phoneNumber)"></div>
+                                </div>
+                                <div data-ng-if="!phoneField.saved" class="col-sm-12 height-45 margin-left-10 margin-right-10">
+                                    <div class="col-sm-1 col-xs-2 margin-top-10 ">
+                                        <span uib-dropdown on-toggle="toggled(open)">
+                                             <a href id="simple-dropdown" ng-model="countryCode" uib-dropdown-toggle class="testClass colorRed">
+                                                {{countryCode}}
+                                             </a>
+                                             <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
+                                                <li ng-repeat="country in countries">
+                                             	   <a href ng-click="selectCountry(this,country.digitcode)">{{country.name}} {{country.digitcode}}</a>
+                                                </li>
+                                             </ul>
+                                         </span>
+                                    </div>
+                                    <div class="col-sm-7 col-xs-8">
+                                        <input class="form-control radius-top-bot margin-top-5 margin-left-15neg" id="phoneNumber" name="{{phoneField.fieldName}}" ng-model="phoneField.phoneNumber" type="text" placeholder="Phone Number">
+                                    </div>
+                                    <div id="save" class="col-sm-4 col-xs-2 pull-right btn btn-red-rounded btn-default btn-circle-border rui-icon-save margin-top-10" ng-click="savePhoneNumber(phoneField.fieldName,phoneField.phoneNumber)"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 border-2">
+                            <a class="pull-right colorRed" data-ng-click="addPhoneNumberTextfield()">Add another</a>
+                        </div>
+                    </div>
+                    <hr class="devider" />
+                    <div class="row margin-bottom-10">
+                        <label class="col-sm-12">Email Addresses</label>
+                        <div data-ng-repeat="emailField in emailTextFieldArr" class="col-sm-12 divStyle">
+                            <div class="row">
+                                <div data-ng-if="emailField.saved" class="col-sm-12 height-45 margin-left-10 margin-right-10">
+                                    <div class="col-sm-7 col-xs-9 margin-top-10 ">{{emailField.email}}</div>
+                                    <div class="col-sm-5 col-xs-3 pull-right btn btn-red-rounded btn-default btn-circle-border rui-icon-delete-cleanup margin-top-5 margin-right-5" data-ng-click="deleteEmailAddress(emailField.email)"></div>
+                                </div>
+                                <div data-ng-if="!emailField.saved" class="col-sm-12 height-45 margin-left-10 margin-right-10">
+                                    <div class="col-sm-7 col-xs-9">
+                                        <input class="form-control radius-top-bot margin-top-5" id="email" name="{{emailField.name}}" data-ng-model="emailField.email" type="text" placeholder="Email Address">
+                                    </div>
+                                    <div id="saveEmail" class="col-sm-5 col-xs-3 pull-right btn btn-red-rounded btn-default btn-circle-border rui-icon-save margin-top-10 " data-ng-click="saveEmailAddress(emailField.fieldName,emailField.email)"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 border-2">
+                        <a class="pull-right colorRed" data-ng-click="addEmailTextfield()">Add another</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

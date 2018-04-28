@@ -1,0 +1,67 @@
+<div class="container" ng-init="scrn1=true;scrn2=false;scrn3=false;scrn4=false;scrn5=false">
+	<div class="row margin-bottom-20">
+	    <div class="col-sm-12">
+	        <div class="headline"><h2>2-Factor Authentication</h2></div>
+	    </div>
+	</div>
+	<div class="row">
+		<div class="col-sm-3">
+	            <div account-navigation></div>
+	    </div>
+		<!-- <div class="col-sm-9">  -->
+		<div class="col-sm-6 col-sm-offset-3 twoFactor-container margin-left-15">
+			<div class="twoFactor-heading">
+				<h2 ng-show="scrn1">Add an extra layer of security!</h2>
+				<h2 ng-show="scrn2">Enter your mobile phone number</h2>
+				<h2 ng-show="scrn3">Enter the code your received via SMS</h2>
+				<h2 ng-show="scrn4"><span class="rui-icon-success icon-color-green-success"></span></h2>
+				<h2 ng-show="scrn5">Disable 2-Factor Authentication</h2>
+			</div>
+			<div class="twoFactor-desc">
+			<p  ng-show="scrn1">Turn on 2-factor verification and you will be required to enter a 
+			unique passcode sent to your mobile device in addition to your
+			username and password.</p>
+			<div ng-show="scrn2" class="row">
+				<div class="countryCodeString col-xs-1">+1</div><div class="col-xs-11" ><input type="text" class="form-control" ng-model="phoneNumber"/></div>
+			</div>
+			<div ng-show="scrn3" class="row">
+				<div class="col-xs-12"><input type="text" class="form-control" ng-model="phoneNumber" placeholder="ex 4247284728"/></div>
+			</div>
+			<p ng-show="scrn4">
+				Your account is currently protected by 2-step verification. While
+				enabled you will be required to enter a unique passcode sent to
+				your mobile device in addition to your username and password.
+			</p>
+			<p ng-show="scrn5">
+				You are about to disable 2-Factor Authentication. Morbi leo
+				risus, porta ac consectetur ac, vestibulum at eros. Lorem
+				ipsum dolor sit amet, consectetur adipiscing elit.
+			</p>
+			<p ng-show="scrn5">
+				To verify that you wish to disable 2-Factor Authentication
+				please enter the code sent to your mobile device via SMS
+				and choose 'Disable'.
+			</p>
+			<div ng-show="scrn5" class="row">
+				<div class="col-xs-12"><input type="text" class="form-control" ng-model="phoneNumber" placeholder="ex 4247284728"/></div>
+			</div>
+			</div>
+			<div class="twoFactor-button" ng-show="scrn1 || scrn2 || scrn4">
+				<div class="btn btn-default btn-red-rounded margin-top-20"  ng-show="scrn1" ng-click="scrn2=true;scrn1=false;scrn3=false;scrn4=false">Get Started</div>
+				<div class="btn btn-default btn-red-rounded margin-top-20"  ng-show="scrn2" ng-click="scrn3=true;scrn1=false;scrn2=false;scrn4=false">Send SMS</div>
+				<div class="btn btn-default btn-red-rounded btn-red-withoutBorder margin-top-20"  ng-show="scrn2" ng-click="scrn1=true;scrn2=false;scrn3=false;scrn4=false;scrn5=false">Cancel</div>
+				<div class="btn btn-default btn-red-rounded margin-top-20"  ng-show="scrn4" ng-click="scrn5=true;scrn1=false;scrn2=false;scrn3=false;scrn4=false">Disable</div>
+			</div>
+			<div class="twoFactor-button not-center-align" ng-show="scrn3">
+				<div class="btn btn-default btn-red-rounded margin-top-20" ng-click="scrn4=true;scrn1=false;scrn2=false;scrn3=false;">Verify</div>
+				<div class="btn btn-default btn-red-rounded btn-disabled margin-top-20">Resend SMS</div>
+				<div class="btn btn-default btn-red-rounded btn-red-withoutBorder margin-top-20 pull-right" ng-click="scrn1=true;scrn2=false;scrn3=false;scrn4=false;scrn5=false">Cancel</div>
+			</div>
+			<div class="twoFactor-button not-center-align" ng-show="scrn5">
+				<div class="btn btn-default btn-red-rounded margin-top-20" ng-click="scrn1=true;scrn2=false;scrn3=false;scrn4=false;scrn5=false">Disable</div>
+				<div class="btn btn-default btn-red-rounded btn-disabled margin-top-20">Send SMS</div>
+				<div class="btn btn-default btn-red-rounded btn-red-withoutBorder margin-top-20 pull-right" ng-click="scrn4=true;scrn1=false;scrn2=false;scrn3=false;scrn5=false">Cancel</div>
+			</div>
+		</div> 
+	</div>
+</div>
